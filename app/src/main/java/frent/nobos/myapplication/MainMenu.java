@@ -38,7 +38,6 @@ public class MainMenu extends Fragment {
             @Override
             public void onClick(View view) {
                 //Navigation.findNavController(MainMenu.this) .navigate(R.id.strat_roulette_choices);
-            }
-        });
+            }});
     }
 }
