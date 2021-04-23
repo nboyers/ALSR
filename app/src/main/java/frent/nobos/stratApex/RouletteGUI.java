@@ -1,11 +1,13 @@
-package frent.nobos.myapplication;
+package frent.nobos.stratApex;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Bundle;
 
-public class StratsRouletteGUI extends AppCompatActivity {
+import frent.nobos.stratApex.R;
+
+public class RouletteGUI extends AppCompatActivity {
 
     private SwitchCompat weapons, medicals, dropzone, gear,character,specials;
 
