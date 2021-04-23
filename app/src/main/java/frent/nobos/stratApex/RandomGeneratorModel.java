@@ -7,7 +7,7 @@ public class RandomGeneratorModel {
             "Shotguns Only", "Pistols Only","Guns with Hop Ups Only", "LMGs Only", "Bow Only",
             "Can't use attachments on weapons", "P2020/Mozambique Only", "Fists Only"};
 
-    private String[] medicals;
+    private String[] medicals = {"healthpacks"};
 
     private String[] dropzone;
 
