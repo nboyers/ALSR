@@ -33,5 +33,5 @@ public class RandomGeneratorModel {
             "You must thirst any downed player and swap before attacking another player.",
     "Sticks and Stones! Only use grenades and bows for a whole game. GLHF",
     "Protect the President! Jumpmaster is president. Protect them at all cost. " +
-            "Failure to do means you forfeit and you must die!"};
+            "Failure to do means you forfeit and you must die!" };
 }
