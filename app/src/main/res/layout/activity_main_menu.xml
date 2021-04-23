@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="frent.nobos.stratApex.StartLaunch">
+    tools:context="frent.nobos.stratApex.views.StartLaunch">
 
     <TextView
         android:id="@+id/Map_Choice_MainMenu"

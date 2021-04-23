@@ -1,4 +1,4 @@
-package frent.nobos.stratApex;
+package frent.nobos.stratApex.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import frent.nobos.stratApex.R;
 
 /**
  * When the app starts

@@ -1,4 +1,4 @@
-package frent.nobos.stratApex;
+package frent.nobos.stratApex.models;
 
 public class RandomGeneratorModel {
 

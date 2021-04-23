@@ -1,4 +1,4 @@
-package frent.nobos.stratApex;
+package frent.nobos.stratApex.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
