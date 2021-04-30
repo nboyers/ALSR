@@ -2,21 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.RouletteGUI"
-
     android:id="@+id/strat_roulette_choices"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:padding="10dp"
     android:paddingHorizontal="16dp"
     android:paddingVertical="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    tools:context=".views.RouletteGUI">
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/weapons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/weapons" />
 
     <TextView
@@ -28,6 +31,7 @@
         android:id="@+id/medicals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/medicals" />
 
     <TextView
@@ -39,6 +43,7 @@
         android:id="@+id/dropzone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/dropzone" />
 
     <TextView
@@ -50,6 +55,7 @@
         android:id="@+id/gear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/gear" />
 
     <TextView
@@ -61,6 +67,7 @@
         android:id="@+id/character"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/character" />
 
     <TextView
@@ -72,6 +79,7 @@
         android:id="@+id/specials"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:text="@string/specials" />
 
     <TextView
@@ -90,14 +98,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/randomize" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:contentDescription="@string/back_Button"
-        android:focusable="true"
-        app:srcCompat="@drawable/abc_vector_test" />
 
 </LinearLayout>
