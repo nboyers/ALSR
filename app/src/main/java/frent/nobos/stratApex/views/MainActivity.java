@@ -3,14 +3,14 @@ package frent.nobos.stratApex.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import frent.nobos.stratApex.R;
 
 /**
  * When the app starts
- * this is the GUI controller
+ * this is the Starting UI the
+ * user sees
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
         });
-
     }
 
     /**

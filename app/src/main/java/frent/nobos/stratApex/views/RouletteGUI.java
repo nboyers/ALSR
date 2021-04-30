@@ -11,21 +11,20 @@ import frent.nobos.stratApex.R;
 public class RouletteGUI extends AppCompatActivity {
 
     private SwitchCompat weapons, medicals, dropzone, gear,character,specials;
-
-
+    private  String mapChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.strat_menu);
-        weapons = findViewById(R.id.weapons);
-        medicals=findViewById(R.id.medicals);
-        dropzone=findViewById(R.id.dropzone);
-        gear=findViewById(R.id.gear);
-        character=findViewById(R.id.character);
-        specials=findViewById(R.id.specials);
+        weapons   =  findViewById(R.id.weapons);
+        medicals  =  findViewById(R.id.medicals);
+        dropzone  =  findViewById(R.id.dropzone);
+        gear      =  findViewById(R.id.gear);
+        character =  findViewById(R.id.character);
+        specials  =  findViewById(R.id.specials);
 
         Intent intent = getIntent();
-        String extraText  = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
+        mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
     }
 }
