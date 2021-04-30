@@ -6,7 +6,6 @@ package frent.nobos.stratApex.models;
  * of strings
  */
 public class GameModel {
-
     private  final String[] WEAPONS = {"Light Ammo Only", "Heavy Ammo Only", "Mozambique Only",
             "No Shotguns", "ARs Only", "No Ars", "Snipers Only", "Energy Ammo Only",
             "Shotguns Only", "Pistols Only","Guns with Hop Ups Only","I thank you. - Caustic",
