@@ -1,5 +1,10 @@
 package frent.nobos.stratApex.models;
 
+/**
+ * Model for the app
+ * that is just a list full
+ * of strings
+ */
 public class GameModel {
 
     private  final String[] WEAPONS = {"Light Ammo Only", "Heavy Ammo Only", "Mozambique Only",
