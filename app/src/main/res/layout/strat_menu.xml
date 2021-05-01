@@ -35,7 +35,7 @@
         android:text="@string/medicals" />
 
     <TextView
-        android:id="@+id/MedicalView"
+        android:id="@+id/medicalView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -97,6 +97,7 @@
         android:id="@+id/randomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/randomize" />
 
 </LinearLayout>

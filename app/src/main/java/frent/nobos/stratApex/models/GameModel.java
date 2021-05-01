@@ -6,28 +6,29 @@ package frent.nobos.stratApex.models;
  * of strings
  */
 public class GameModel {
-    private  final String[] WEAPONS = {"Light Ammo Only", "Heavy Ammo Only", "Mozambique Only",
+    
+    public  final String[] WEAPONS = {"Light Ammo Only", "Heavy Ammo Only", "Mozambique Only",
             "No Shotguns", "ARs Only", "No Ars", "Snipers Only", "Energy Ammo Only",
             "Shotguns Only", "Pistols Only","Guns with Hop Ups Only","I thank you. - Caustic",
             "LMGs Only", "Bow Only", "Can't use attachments on weapons", "P2020/Mozambique Only",
             "Fists Only"};
 
-    private final String[] MEDICALS = {"No Lifeline Drone","Lifeline Drone only","No Phoenix Kits",
+    public final String[] MEDICALS = {"No Lifeline Drone","Lifeline Drone only","No Phoenix Kits",
    "Phoenix Kits only","No healables. GLHF","Shield Batteries only","Only shield regen",
             "Only health regen", "No big heals","Only big heals","Med kits only","Shield Cells only"
     ,"Syringes only","Who's ready to die on a zipline? I am!","Pain, pain, pain, pain - Wratih"};
 
-    private final  String[] EQUIPMENT = {"No body shields","No arc stars","No extended mags",
+    public final  String[] GEAR = {"No body shields","No arc stars","No extended mags",
             "No barrel stabalisers","No helmets","Helmets only"," Speed is life! - Octane",
             "No knockdown shields (minus self res shield)","No red evos","Only white gear",
             "No frag grenades","No thermite grenades","Only grenades are thermites","No abilities.",
             "Nessie isn't a piece of equipment, she's a stuffed toy!"};
 
-    private  final String[] CHARACTERS = {"Bloodhound","Pathfinder","Bangalore", "Caustic","Crypto",
+    public final String[] CHARACTERS = {"Bloodhound","Pathfinder","Bangalore", "Caustic","Crypto",
     "Fuse", "Gibraltar", "Horizon", "Lifeline","Loba", "Mirage", "Octane", "Rampart", "Revenant",
             "Wattson", "Wraith"};
 
-    private final String[] SPECIALS = {"Bloodthirsty. You cannot heal until you kill.",
+    public final String[] SPECIALS = {"Bloodthirsty. You cannot heal until you kill.",
             "Sole Survivor. Everyone in the squad must solo queue.",
             "Time's Up! Jumpmaster lands somewhere else to others. " +
             "If the Jumpmaster dies before the meetup, or after 5 minutes, all must die! ",
