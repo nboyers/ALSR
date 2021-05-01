@@ -16,7 +16,7 @@
     tools:context=".views.RouletteGUI">
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/weapons"
+        android:id="@+id/weaponsSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/medicals"
+        android:id="@+id/medicalsSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/dropzone"
+        android:id="@+id/dropzoneSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/gear"
+        android:id="@+id/gearSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/character"
+        android:id="@+id/characterSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/specials"
+        android:id="@+id/specialSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -98,7 +98,6 @@
         android:id="@+id/randomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:text="@string/randomize" />
 
 </LinearLayout>

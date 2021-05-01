@@ -12,9 +12,11 @@ import frent.nobos.stratApex.views.RouletteGUI;
  * @author Noah Boyers
  */
 public class rouletteLogic {
-    private String mapChoice;
+    private String mapChoice = "hey";
     private boolean weapons,medicals,gear, character, specials;
-    private String weaponsString,medString,gearString,charcterString,specialString;
+
+    private String weaponsString = "hey ",medString= "hey",gearString= "hey ",
+                   charcterString= " hey",specialString= "hey";
     private final GameModel gm = new GameModel();
     private final RouletteGUI rGUI = new RouletteGUI();
 
@@ -143,7 +145,6 @@ public class rouletteLogic {
     public void startGame(String mapChoice, boolean weapons,boolean medicals, boolean gear, boolean character,
                           boolean specials) {
 
-
         //Gets the boolean logic
         setMapChoice(mapChoice);
         setWeapons(weapons);
@@ -155,56 +156,79 @@ public class rouletteLogic {
         randomLoadouts();
     }
 
+    public void setWeaponsString(String weaponsString) {
+        this.weaponsString = weaponsString;
+    }
+
+    public void setMedString(String medString) {
+        this.medString = medString;
+    }
+
+    public void setGearString(String gearString) {
+        this.gearString = gearString;
+    }
+
+    public void setCharcterString(String charcterString) {
+        this.charcterString = charcterString;
+    }
+
+    public void setSpecialString(String specialString) {
+        this.specialString = specialString;
+    }
+
     /**
      * Method thatupdates all the Strings
      */
     private void randomLoadouts(){
 
-        // Deterimes the map the user is playing on for drop areas
+        // Determines the map the user is playing on for drop areas
         switch(mapChoice) {
-            case "Kings Wold":
-               // mapChoice = getRandom(gm.KINGS_WORLD);
+            case "Kings Canyon":
+                mapChoice = getRandom(gm.KINGS_CANYON);
+                break;
+            case "Olympus":
+                mapChoice = getRandom(gm.OLYMPUS);
                 break;
             case "Worlds Edge":
-             //   mapChoice = getRandom(gm.WORLDS_EDGE);
-                break;
-            case "olympus":
-             //   mapChoice = getRandom(gm.OLYMPUS);
+                mapChoice = getRandom(gm.WORLDS_EDGE);
                 break;
             default:
                 mapChoice = "Drop in the middle of the map";
+
         }
 
-        // Controls the logic for each catagory.
+        // Controls the logic for each category.
         if(weapons) {
-         weaponsString = getRandom(gm.WEAPONS);
+            setWeaponsString(getRandom(gm.WEAPONS));
         } else {
-            weaponsString = "";
+            setMapChoice("");
         }
         if(medicals){
-           medString = getRandom(gm.MEDICALS);
+            setMedString(getRandom(gm.MEDICALS));
         } else {
-            medString = "";
+            setMedString(" ");
         }
         if(gear){
-           gearString = getRandom(gm.GEAR);
+            setGearString(getRandom(gm.GEAR));
         } else {
-            gearString = "";
+            setGearString("");
         }
         if(character){
-           charcterString = getRandom(gm.CHARACTERS);
+           setCharcterString(getRandom(gm.CHARACTERS));
         } else {
-            charcterString = "";
+            setCharcterString("");
         }
         if(specials){
-           specialString = getRandom(gm.SPECIALS);
+           setSpecialString(getRandom(gm.SPECIALS));
         } else {
-            specialString = "";
+            setSpecialString("");
         }
 
-        // Sends the random streings back to the GUI for the user
-       rGUI.updateUI(getWeaponsString(), getMedString(),getMapChoice(), getGearString(), getCharcterString(), getSpecialString());
+        // Sends the random strings back to the GUI for the user
+       rGUI.updateUI(getWeaponsString(), getMedString(),getMapChoice(),
+                     getGearString(), getCharcterString(), getSpecialString());
     }
+
     /**
      * Method that returns the string at the random nth place
      * @param array - catagory from what to choose from

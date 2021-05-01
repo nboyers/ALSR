@@ -6,10 +6,8 @@ import androidx.appcompat.widget.SwitchCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Switch;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import frent.nobos.stratApex.R;
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
@@ -23,7 +21,7 @@ public class RouletteGUI extends AppCompatActivity {
 
     // Switches for the app
     private SwitchCompat weaponSwitch,medicalSwitch ,dropzoneSwitch, gearSwitch,
-                   characterSwitch,specialSwitch ;
+                   characterSwitch,specialSwitch;
 
     //Views where the user sees the strats
     private TextView weaponsView, medicalsView,dropZoneView, gearView, characterView,specialsView;
@@ -41,13 +39,16 @@ public class RouletteGUI extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.strat_menu);
 
+            Intent intent = getIntent();
+            mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
+
             //Switches
-            weaponSwitch       =  findViewById(R.id.weapons);
-            medicalSwitch      =  findViewById(R.id.medicals);
-            dropzoneSwitch     =  findViewById(R.id.dropzone);
-            gearSwitch         =  findViewById(R.id.gear);
-            characterSwitch    =  findViewById(R.id.character);
-            specialSwitch      =  findViewById(R.id.specials);
+            weaponSwitch       =  findViewById(R.id.weaponsSwitch);
+            medicalSwitch      =  findViewById(R.id.medicalsSwitch);
+            dropzoneSwitch     =  findViewById(R.id.dropzoneSwitch);
+            gearSwitch         =  findViewById(R.id.gearSwitch);
+            characterSwitch    =  findViewById(R.id.characterSwitch);
+            specialSwitch      =  findViewById(R.id.specialSwitch);
 
             // Text View(s)
             weaponsView        = findViewById(R.id.weaponsView);
@@ -57,8 +58,13 @@ public class RouletteGUI extends AppCompatActivity {
             characterView      = findViewById(R.id.charcterView);
             specialsView       = findViewById(R.id.specialView);
 
-            Intent intent = getIntent();
-            mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
+        Button random_btn      = findViewById(R.id.randomButton);
+
+            random_btn.setOnClickListener(v -> {
+                rouletteLogic rl = new rouletteLogic();
+                rl.startGame(mapChoice, weaponSwitch.isChecked(), medicalSwitch.isChecked(),
+                        gearSwitch.isChecked(), characterSwitch.isChecked(), specialSwitch.isChecked());
+            });
     }
 
 
@@ -78,43 +84,15 @@ public class RouletteGUI extends AppCompatActivity {
     // every time. Fix me and this app 'should' work
     public void updateUI(String weapons, String medicals,String dropZone,
                          String gear, String character,String specials){
-        weaponsView        = findViewById(R.id.weaponsView);
-        medicalsView       = findViewById(R.id.medicalView);
-        dropZoneView       = findViewById(R.id.dropzoneView);
-        gearView           = findViewById(R.id.gearView);
-        characterView      = findViewById(R.id.charcterView);
-        specialsView       = findViewById(R.id.specialView);
-
-        this.runOnUiThread(() -> {
+        // FIXME - Crashes
+        runOnUiThread(() -> {
             weaponsView.setText(weapons);
-            weaponsView.invalidate();
-
             medicalsView.setText(medicals);
-            medicalsView.invalidate();
-
             dropZoneView.setText(dropZone);
-            dropZoneView.invalidate();
-
             gearView.setText(gear);
-            gearView.invalidate();
-
             characterView.setText(character);
-            characterView.invalidate();
-
             specialsView.setText(specials);
-            specialsView.invalidate();
         });
-    }
-
-    /**
-     * Method That starts the generator
-     * the random outcomes
-     * @param view - not used
-     */
-    public void onClick(View view ){
-        rouletteLogic rl = new rouletteLogic();
-        rl.startGame(mapChoice, weaponSwitch.isChecked(), medicalSwitch.isChecked(),
-                gearSwitch.isChecked(), characterSwitch.isChecked(), specialSwitch.isChecked());
     }
 
     /**
@@ -123,7 +101,6 @@ public class RouletteGUI extends AppCompatActivity {
      */
     public void resetButton(View view){
 
-        // Makes the challenges go away
         weaponsView.setText("");
         medicalsView.setText("");
         dropZoneView.setText("");
