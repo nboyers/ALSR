@@ -16,7 +16,7 @@ import frent.nobos.stratApex.ViewModels.rouletteLogic;
 
 public class RouletteGUI extends AppCompatActivity {
 
-    private Switch weaponSwitch,medicalSwitch ,dropzoneSwitch, gearSwitch,
+    private SwitchCompat weaponSwitch,medicalSwitch ,dropzoneSwitch, gearSwitch,
                    characterSwitch,specialSwitch ;
     private TextView weaponsView, medicalsView,dropZoneView, gearView, characterView,specialsView;
     private  String mapChoice;
@@ -33,20 +33,19 @@ public class RouletteGUI extends AppCompatActivity {
 
             //Switches
             weaponSwitch       =  findViewById(R.id.weapons);
-            medicalSwitch       =  findViewById(R.id.medicals);
-            dropzoneSwitch       =  findViewById(R.id.dropzone);
-            gearSwitch           =  findViewById(R.id.gear);
-            characterSwitch      =  findViewById(R.id.character);
-            specialSwitch       =  findViewById(R.id.specials);
+            medicalSwitch      =  findViewById(R.id.medicals);
+            dropzoneSwitch     =  findViewById(R.id.dropzone);
+            gearSwitch         =  findViewById(R.id.gear);
+            characterSwitch    =  findViewById(R.id.character);
+            specialSwitch      =  findViewById(R.id.specials);
 
             // Text View(s)
-            weaponsView    = findViewById(R.id.weaponsView);
-            medicalsView   = findViewById(R.id.medicalView);
-            dropZoneView   = findViewById(R.id.dropzoneView);
-            gearView       = findViewById(R.id.gearView);
-            characterView  = findViewById(R.id.charcterView);
-            specialsView   = findViewById(R.id.specialView);
-
+            weaponsView        = findViewById(R.id.weaponsView);
+            medicalsView       = findViewById(R.id.medicalView);
+            dropZoneView       = findViewById(R.id.dropzoneView);
+            gearView           = findViewById(R.id.gearView);
+            characterView      = findViewById(R.id.charcterView);
+            specialsView       = findViewById(R.id.specialView);
 
             Intent intent = getIntent();
             mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
@@ -63,32 +62,72 @@ public class RouletteGUI extends AppCompatActivity {
      * @param character
      * @param specials
      */
+
+    //FIXME - The scene needs to be updated with a recycler instead of a new "scene"
+    // every time. Fix me and this app 'should' work
     public void updateUI(String weapons, String medicals,String dropZone,
                          String gear, String character,String specials){
-        onCheckedChanged(weaponSwitch,true);
-        weaponsView.setText(weapons);
-        medicalsView.setText(medicals);
-        dropZoneView.setText(dropZone);
-        gearView.setText(gear);
-        characterView.setText(character);
-        specialsView.setText(specials);
+        weaponsView        = findViewById(R.id.weaponsView);
+        medicalsView       = findViewById(R.id.medicalView);
+        dropZoneView       = findViewById(R.id.dropzoneView);
+        gearView           = findViewById(R.id.gearView);
+        characterView      = findViewById(R.id.charcterView);
+        specialsView       = findViewById(R.id.specialView);
 
+        this.runOnUiThread(() -> {
+            weaponsView.setText(weapons);
+            weaponsView.invalidate();
+
+            medicalsView.setText(medicals);
+            medicalsView.invalidate();
+
+            dropZoneView.setText(dropZone);
+            dropZoneView.invalidate();
+
+            gearView.setText(gear);
+            gearView.invalidate();
+
+            characterView.setText(character);
+            characterView.invalidate();
+
+            specialsView.setText(specials);
+            specialsView.invalidate();
+        });
     }
 
-    //FIXME - make a check or not method work better
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Toast.makeText(this, "The Switch is " + (isChecked ? "on" : "off"),
-                Toast.LENGTH_SHORT).show();
-        if(isChecked) {
-            //do stuff when Switch is ON
-        } else {
-            //do stuff when Switch if OFF
-        }
-    }
-
-    //FIXME - needs to define logic for RANDOMIZER BUTTON
+    /**
+     * Method That starts the generator
+     * the random outcomes
+     * @param view - not used
+     */
     public void onClick(View view ){
         rouletteLogic rl = new rouletteLogic();
+        rl.startGame(mapChoice, weaponSwitch.isChecked(), medicalSwitch.isChecked(),
+                gearSwitch.isChecked(), characterSwitch.isChecked(), specialSwitch.isChecked());
+    }
+
+    /**
+     * Method that resets the view
+     * @param view - The strat menu
+     */
+    public void resetButton(View view){
+
+        // Makes the challenges go away
+        weaponsView.setText("");
+        medicalsView.setText("");
+        dropZoneView.setText("");
+        gearView.setText("");
+        characterView.setText("");
+        specialsView.setText("");
+
+        // Makes all the switches to true
+        weaponSwitch.setChecked(true);
+        medicalSwitch.setChecked(true);
+        characterSwitch.setChecked(true);
+        dropzoneSwitch.setChecked(true);
+        gearSwitch.setChecked(true);
+        specialSwitch.setChecked(true);
+
 
     }
 }

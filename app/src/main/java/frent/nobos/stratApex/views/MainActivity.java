@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
         });
+
     }
 
     /**
