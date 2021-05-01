@@ -11,6 +11,8 @@ import frent.nobos.stratApex.R;
  * When the app starts
  * this is the Starting UI the
  * user sees
+ * Last Edited: 2021-05-01
+ * @author Noah Boyers
  */
 public class MainActivity extends AppCompatActivity {
 

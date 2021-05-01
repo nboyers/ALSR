@@ -4,6 +4,8 @@ package frent.nobos.stratApex.models;
  * Model for the app
  * that is just a list full
  * of strings
+ * Last Edited: 2021-05-01
+ * @author Noah Boyers
  */
 public class GameModel {
     

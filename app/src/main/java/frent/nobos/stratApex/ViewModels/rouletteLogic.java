@@ -8,6 +8,8 @@ import frent.nobos.stratApex.views.RouletteGUI;
 /**
  * Viewmodel class
  * that controls all the game logic
+ * Last Edited: 2021-05-01
+ * @author Noah Boyers
  */
 public class rouletteLogic {
     private String mapChoice;
@@ -116,7 +118,7 @@ public class rouletteLogic {
 
     /**
      * Getter for Character
-     * @return
+     * @return - character as string
      */
     private String getCharcterString() {
         return charcterString;
@@ -132,11 +134,11 @@ public class rouletteLogic {
 
     /**
      * Method that gets the info from the GUI to start logic
-     * @param weapons
-     * @param medicals
-     * @param gear
-     * @param character
-     * @param specials
+     * @param weapons - true / false to weapon option
+     * @param medicals - true / false to medical option
+     * @param gear - true / false to gear option
+     * @param character - true / false to character option
+     * @param specials - true / false to special rule option
      */
     public void startGame(String mapChoice, boolean weapons,boolean medicals, boolean gear, boolean character,
                           boolean specials) {
@@ -203,7 +205,6 @@ public class rouletteLogic {
         // Sends the random streings back to the GUI for the user
        rGUI.updateUI(getWeaponsString(), getMedString(),getMapChoice(), getGearString(), getCharcterString(), getSpecialString());
     }
-
     /**
      * Method that returns the string at the random nth place
      * @param array - catagory from what to choose from

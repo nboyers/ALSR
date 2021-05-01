@@ -14,17 +14,27 @@ import android.widget.Toast;
 import frent.nobos.stratApex.R;
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
 
+/**
+ * Strat Roulette Class that controls the GUI
+ * Last Edited: 2021-05-01
+ * @author Noah Boyers
+ */
 public class RouletteGUI extends AppCompatActivity {
 
+    // Switches for the app
     private SwitchCompat weaponSwitch,medicalSwitch ,dropzoneSwitch, gearSwitch,
                    characterSwitch,specialSwitch ;
+
+    //Views where the user sees the strats
     private TextView weaponsView, medicalsView,dropZoneView, gearView, characterView,specialsView;
+
+    //name of the map they want to do the strat on
     private  String mapChoice;
 
     /**
      * Method that runs on the creation of
      * the start of the app
-     * @param savedInstanceState
+     * @param savedInstanceState - idk not used(?)
      */
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +65,13 @@ public class RouletteGUI extends AppCompatActivity {
     /**
      * Method that updates tbe GUI from
      * that came from the rouletteLogic.java
-     * @param weapons
-     * @param medicals
-     * @param dropZone
-     * @param gear
-     * @param character
-     * @param specials
+     *
+     * @param weapons - random weapons string
+     * @param medicals - random medical string
+     * @param dropZone -  random dropZone string
+     * @param gear - random gear string
+     * @param character - random character string
+     * @param specials - Specials string to be placed
      */
 
     //FIXME - The scene needs to be updated with a recycler instead of a new "scene"
@@ -127,7 +138,5 @@ public class RouletteGUI extends AppCompatActivity {
         dropzoneSwitch.setChecked(true);
         gearSwitch.setChecked(true);
         specialSwitch.setChecked(true);
-
-
     }
 }
