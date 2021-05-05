@@ -1,7 +1,10 @@
 package frent.nobos.stratApex.ViewModels;
 
+import android.util.Log;
+
 import java.util.Random;
 
+import frent.nobos.stratApex.R;
 import frent.nobos.stratApex.models.GameModel;
 import frent.nobos.stratApex.views.RouletteGUI;
 
@@ -11,37 +14,27 @@ import frent.nobos.stratApex.views.RouletteGUI;
  * Last Edited: 2021-05-01
  * @author Noah Boyers
  */
-public class rouletteLogic {
+public class rouletteLogic extends RouletteGUI{
     private String mapChoice = "hey";
     private boolean weapons,medicals,gear, character, specials;
+    private String BROKE = "ERROR";
 
-    private String weaponsString = "hey ",medString= "hey",gearString= "hey ",
-                   charcterString= " hey",specialString= "hey";
+    private String weaponsString ,medString,gearString,
+            charcterString,specialString;
+
     private final GameModel gm = new GameModel();
-    private final RouletteGUI rGUI = new RouletteGUI();
-
 
     /**
      * Default constructor
      */
     public rouletteLogic() {}
-
-    /**
-     * Constructor that takes what map is being used
-     * @param map - what map the user is playing on
-     */
-    public rouletteLogic(String map){
-        setMapChoice(map);
-    }
-
     /**
      * Method that gets the map choice
      * @return -the map choice
      */
-    public String getMapChoice() {
+    private String getMapChoice() {
         return mapChoice;
     }
-
     /**
      * Method that sets the map choice
      * @param map - takes in a map type
@@ -49,50 +42,43 @@ public class rouletteLogic {
     private void setMapChoice(String map) {
         this.mapChoice = map;
     }
-
     /**
      * Sets the weapon boolean
      * @param weapons true if user wants to include weapons otherwise false
      */
-    public void setWeapons(boolean weapons) {
+    private void setWeapons(boolean weapons) {
         this.weapons = weapons;
     }
-
     /**
      *
      * @param medicals true if user wants to include meds otherwise false
      */
-    public void setMedicals(boolean medicals) {
+    private void setMedicals(boolean medicals) {
         this.medicals = medicals;
     }
-
     /**
      *
      * @param gear true if user wants to include gear otherwise false
      */
-    public void setGear(boolean gear) {
+    private void setGear(boolean gear) {
         this.gear = gear;
     }
-
     /**
      * Sets the boolean if the user wanted to
      * use characters in the random loadouts
      * @param character - true or false for yes or no
      */
-
-    public void setCharacter(boolean character) {
+    private void setCharacter(boolean character) {
         this.character = character;
     }
-
     /**
      * Sets boolean if the user wants to use
      * special rules in their random loadouts
      * @param specials true or false for yes or no
      */
-    public void setSpecials(boolean specials) {
+    private void setSpecials(boolean specials) {
         this.specials = specials;
     }
-
     /**
      * getter for the weapons
      * @return weapon string
@@ -100,16 +86,13 @@ public class rouletteLogic {
     private String getWeaponsString() {
         return weaponsString;
     }
-
     /**
      * Getter for medical
      * @return medical string
      */
-
     private String getMedString() {
         return medString;
     }
-
     /**
      * Getter for Gear
      * @return gear String
@@ -117,7 +100,6 @@ public class rouletteLogic {
     private String getGearString() {
         return gearString;
     }
-
     /**
      * Getter for Character
      * @return - character as string
@@ -125,7 +107,6 @@ public class rouletteLogic {
     private String getCharcterString() {
         return charcterString;
     }
-
     /**
      * Getter for special Rules
      * @return Special Rule string
@@ -133,7 +114,23 @@ public class rouletteLogic {
     private String getSpecialString() {
         return specialString;
     }
+    private void setWeaponsString(String weaponsString) {
+        this.weaponsString = weaponsString;
+    }
+    private void setMedString(String medString) {
+        this.medString = medString;
+    }
+    private void setGearString(String gearString) {
+        this.gearString = gearString;
+    }
+    private void setCharcterString(String charcterString) {
+        this.charcterString = charcterString;
+    }
+    private void setSpecialString(String specialString) {
+        this.specialString = specialString;
+    }
 
+//ACTUALY GAME
     /**
      * Method that gets the info from the GUI to start logic
      * @param weapons - true / false to weapon option
@@ -152,28 +149,7 @@ public class rouletteLogic {
         setGear(gear);
         setCharacter(character);
         setSpecials(specials);
-
         randomLoadouts();
-    }
-
-    public void setWeaponsString(String weaponsString) {
-        this.weaponsString = weaponsString;
-    }
-
-    public void setMedString(String medString) {
-        this.medString = medString;
-    }
-
-    public void setGearString(String gearString) {
-        this.gearString = gearString;
-    }
-
-    public void setCharcterString(String charcterString) {
-        this.charcterString = charcterString;
-    }
-
-    public void setSpecialString(String specialString) {
-        this.specialString = specialString;
     }
 
     /**
@@ -194,14 +170,13 @@ public class rouletteLogic {
                 break;
             default:
                 mapChoice = "Drop in the middle of the map";
-
         }
 
         // Controls the logic for each category.
         if(weapons) {
             setWeaponsString(getRandom(gm.WEAPONS));
         } else {
-            setMapChoice("");
+            setMapChoice(" ");
         }
         if(medicals){
             setMedString(getRandom(gm.MEDICALS));
@@ -211,22 +186,22 @@ public class rouletteLogic {
         if(gear){
             setGearString(getRandom(gm.GEAR));
         } else {
-            setGearString("");
+            setGearString(" ");
         }
         if(character){
-           setCharcterString(getRandom(gm.CHARACTERS));
+            setCharcterString(getRandom(gm.CHARACTERS));
         } else {
-            setCharcterString("");
+            setCharcterString(" ");
         }
         if(specials){
-           setSpecialString(getRandom(gm.SPECIALS));
+            setSpecialString(getRandom(gm.SPECIALS));
         } else {
-            setSpecialString("");
+            setSpecialString(" ");
         }
 
         // Sends the random strings back to the GUI for the user
-       rGUI.updateUI(getWeaponsString(), getMedString(),getMapChoice(),
-                     getGearString(), getCharcterString(), getSpecialString());
+        gameUpdate(getWeaponsString(), getMedString(), getMapChoice(),
+                    getGearString(), getCharcterString(), getSpecialString());
     }
 
     /**
@@ -234,8 +209,8 @@ public class rouletteLogic {
      * @param array - catagory from what to choose from
      * @return - the random String from the model arrays
      */
-   private static String getRandom(String[] array) {
-       int rnd = new Random().nextInt(array.length);
+    private static String getRandom(String[] array) {
+        int rnd = new Random().nextInt(array.length);
         return array[rnd];
     }
 }
