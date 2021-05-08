@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Button King_btn,Oly_btm,worldEdge_btn;
     private String sendToActivity;
 
+   // public final ActivityMainBinding BINDING = ActivityMainBinding.inflate();
+
 
 
     /**

@@ -4,16 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-
-import frent.nobos.stratApex.R;
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
+import frent.nobos.stratApex.databinding.StratMenuBinding;
 
 /**
  * Strat Roulette Class that controls the GUI
@@ -29,6 +27,7 @@ public class RouletteGUI extends AppCompatActivity {
     private final Handler textViewUpdaterHandler = new Handler(Looper.getMainLooper());
     private String weapons, medicals, dropZone,
             gear, character, specials;
+    private final StratMenuBinding STR_BIND = StratMenuBinding.inflate(getLayoutInflater());
 
 
     //Views where the user sees the strats
@@ -47,26 +46,10 @@ public class RouletteGUI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.strat_menu);
+        setContentView(STR_BIND.getRoot());
 
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
-
-        //Switches
-        weaponSwitch = findViewById(R.id.weaponsSwitch);
-        medicalSwitch = findViewById(R.id.medicalsSwitch);
-        dropzoneSwitch = findViewById(R.id.dropzoneSwitch);
-        gearSwitch = findViewById(R.id.gearSwitch);
-        characterSwitch = findViewById(R.id.characterSwitch);
-        specialSwitch = findViewById(R.id.specialSwitch);
-
-        // Text View(s)
-        weaponsView = (TextView) findViewById(R.id.weaponView);
-        medicalsView = (TextView) findViewById(R.id.medicalView);
-        dropZoneView = (TextView) findViewById(R.id.dropzoneView);
-        gearView = (TextView) findViewById(R.id.gearView);
-        characterView = (TextView) findViewById(R.id.charcterView);
-        specialsView = (TextView) findViewById(R.id.specialView);
 
     }
 
@@ -87,12 +70,12 @@ public class RouletteGUI extends AppCompatActivity {
      * @param view - The strat menu
      */
     public void resetButton(View view) {
-        weaponsView.setText(" ");
-        medicalsView.setText(" ");
-        dropZoneView.setText(" ");
-        gearView.setText(" ");
-        characterView.setText(" ");
-        specialsView.setText(" ");
+        STR_BIND.weaponView.setText("");
+        STR_BIND.medicalView.setText("");
+        STR_BIND.dropzoneView.setText("");
+        STR_BIND.gearView.setText("");
+        STR_BIND.charcterView.setText("");
+        STR_BIND.specialView.setText("");
 
         // Makes all the switches to true
         weaponSwitch.setChecked(true);
@@ -127,12 +110,12 @@ public class RouletteGUI extends AppCompatActivity {
                 gear, character, specials;
         @Override
         public void run() {
-            ((TextView) findViewById(R.id.weaponView)).setText(weapons);
-            ((TextView) findViewById(R.id.medicalView)).setText(medicals);
-            ((TextView) findViewById(R.id.dropzoneView)).setText(dropZone);
-            ((TextView) findViewById(R.id.gearView)).setText(gear);
-            ((TextView) findViewById(R.id.charcterView)).setText(character);
-            ((TextView) findViewById(R.id.specialView)).setText(specials);
+            STR_BIND.weaponView.setText(weapons);
+            STR_BIND.medicalView.setText(medicals);
+            STR_BIND.dropzoneView.setText(dropZone);
+            STR_BIND.gearView.setText(gear);
+            STR_BIND.charcterView.setText(character);
+            STR_BIND.specialView.setText(specials);
         }
 
         // SETTERS
