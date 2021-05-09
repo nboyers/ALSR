@@ -1,14 +1,14 @@
 package frent.nobos.stratApex.views;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 
 import frent.nobos.stratApex.R;
+import frent.nobos.stratApex.databinding.ActivityMainBinding;
 
 /**
  * When the app starts
@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private Button King_btn,Oly_btm,worldEdge_btn;
     private String sendToActivity;
 
-   // public final ActivityMainBinding BINDING = ActivityMainBinding.inflate();
-
-
-
     /**
      *
      * @param savedInstanceState - mapping from String keys to various Parcelable values.
@@ -35,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_main);
         King_btn = findViewById(R.id.kingsCanyon_button);
         Oly_btm = findViewById(R.id.olympus_Button);
         worldEdge_btn = findViewById(R.id.worldsEdge_Button);
-
-
 
         King_btn.setOnClickListener(v -> {
             sendToActivity = King_btn.getText().toString();
@@ -55,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
         });
-
     }
 
     /**
@@ -67,4 +59,10 @@ public class MainActivity extends AppCompatActivity {
          intent.putExtra(TEXT_TO_SEND, sendToActivity);
          startActivity(intent);
     }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+    }
+
 }
