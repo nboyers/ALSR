@@ -110,6 +110,9 @@ public class rouletteLogic extends RouletteGUI{
         return array[rnd];
     }
 
+    /**
+     * Updates the GUI
+     */
     public  void gameUpdate() {
         new RouletteGUI(getWeaponsString(),
                 getMedString(),
