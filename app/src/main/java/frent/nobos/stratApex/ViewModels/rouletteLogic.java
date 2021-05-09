@@ -8,7 +8,7 @@ import frent.nobos.stratApex.views.RouletteGUI;
 /**
  * Viewmodel class
  * that controls all the game logic
- * Last Edited: 2021-05-01
+ * Last Edited: 2021-05-09
  * @author Noah Boyers
  */
 public class rouletteLogic extends RouletteGUI{

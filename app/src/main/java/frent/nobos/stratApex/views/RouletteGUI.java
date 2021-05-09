@@ -12,7 +12,7 @@ import frent.nobos.stratApex.databinding.StratMenuBinding;
 
 /**
  * Strat Roulette Class that controls the GUI
- * Last Edited: 2021-05-01
+ * Last Edited: 2021-05-09
  * @author Noah Boyers
  */
 public class RouletteGUI extends AppCompatActivity {
