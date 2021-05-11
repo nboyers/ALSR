@@ -67,6 +67,8 @@ public class rouletteLogic extends RouletteGUI{
                 default:
                     mapChoice = "Drop in the middle of the map";
             }
+            } else  {
+            mapChoice = "";
         }
 
         // Controls the logic for each category.
