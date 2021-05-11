@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
+
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
 import frent.nobos.stratApex.databinding.StratMenuBinding;
 
 /**
  * Strat Roulette Class that controls the GUI
- * Last Edited: 2021-05-09
+ * Last Edited: 2021-05-11
  * @author Noah Boyers
  */
 public class RouletteGUI extends AppCompatActivity {
@@ -64,17 +67,22 @@ public class RouletteGUI extends AppCompatActivity {
                     getMapChoice(),
                     getWeaponSwitch(),
                     getMedicalSwitch(),
-                    getCharacterSwitch(),
                     getDropzoneSwitch(),
                     getGearSwitch(),
-                    getSpecialSwitch()
-            );
+                    getCharacterSwitch(),
+                    getSpecialSwitch());
 
             STR_BIND.weaponView.setText(rL.getWeaponsString());
             STR_BIND.medicalView.setText(rL.getMedString());
             STR_BIND.dropzoneView.setText(rL.getDropzoneString());
             STR_BIND.gearView.setText(rL.getGearString());
-            STR_BIND.charcterView.setText(rL.getCharcterString());
+
+            if(!STR_BIND.characterSwitch.isChecked()){
+                STR_BIND.charcterView.setText("");
+            } else {
+                STR_BIND.charcterView.setText(Arrays.toString(rL.getCharacterArray()));
+            }
+
             STR_BIND.specialView.setText(rL.getSpecialString());
     }
 

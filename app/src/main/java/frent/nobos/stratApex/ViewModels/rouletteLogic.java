@@ -1,5 +1,7 @@
 package frent.nobos.stratApex.ViewModels;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import frent.nobos.stratApex.models.GameModel;
@@ -8,15 +10,16 @@ import frent.nobos.stratApex.views.RouletteGUI;
 /**
  * Viewmodel class
  * that controls all the game logic
- * Last Edited: 2021-05-09
+ * Last Edited: 2021-05-11
  * @author Noah Boyers
  */
 public class rouletteLogic extends RouletteGUI{
     private String mapChoice;
     private boolean weapons,dropZone,medicals,gear, character, specials;
 
-    private String weaponsString ,medString,gearString,
-            charcterString,specialString;
+    private String weaponsString ,medString,gearString,specialString, characterString;
+
+    private String[] characterArray = new String[3];
 
     private final GameModel gm = new GameModel();
 
@@ -52,7 +55,6 @@ public class rouletteLogic extends RouletteGUI{
      */
     private void randomLoadouts(){
 
-
         if(dropZone) {
             switch (mapChoice) {
                 case "Kings Canyon":
@@ -68,7 +70,7 @@ public class rouletteLogic extends RouletteGUI{
                     mapChoice = "Drop in the middle of the map";
             }
             } else  {
-            mapChoice = "";
+            mapChoice = " ";
         }
 
         // Controls the logic for each category.
@@ -87,10 +89,27 @@ public class rouletteLogic extends RouletteGUI{
         } else {
             setGearString(" ");
         }
-        if(character){
-            setCharcterString(getRandom(gm.CHARACTERS));
+        if(character) {
+            setCharacterString(getRandom(gm.CHARACTERS));
+            String firstPos = getCharacterString(); //Gets the position 0 of the array.
+
+            for (int i = 0; i < 3; i++){
+                String t = getCharacterString();
+                setCharacterString(getRandom(gm.CHARACTERS));
+                characterArray[i] = getCharacterString();
+
+                //Checks if the position to the left is the same or the last and the first are
+                //The same
+                if (characterArray[i].equals(t) || characterArray[i].equals(firstPos)) {
+                setCharacterString(getRandom(gm.CHARACTERS));
+                characterArray[i] = getCharacterString();
+                }
+            }
         } else {
-            setCharcterString(" ");
+            for(int i =0; i<3; i++){
+                setCharacterString("");
+                characterArray[i] = getCharacterString();
+            }
         }
         if(specials){
             setSpecialString(getRandom(gm.SPECIALS));
@@ -144,7 +163,7 @@ public class rouletteLogic extends RouletteGUI{
      * use characters in the random loadouts
      * @param character - true or false for yes or no
      */
-    private  void setCharacter(boolean character) {
+    private void setCharacter(boolean character) {
         this.character = character;
     }
     /**
@@ -179,13 +198,7 @@ public class rouletteLogic extends RouletteGUI{
     public String getGearString() {
         return gearString;
     }
-    /**
-     * Getter for Character
-     * @return - character as string
-     */
-    public String getCharcterString() {
-        return charcterString;
-    }
+
     /**
      * Getter for special Rules
      * @return Special Rule string
@@ -199,7 +212,9 @@ public class rouletteLogic extends RouletteGUI{
 
 
     //SETTERS FOR STRINGS
-
+     public void setCharacterString(String characters){
+        this.characterString = characters;
+}
     /**
      * SEtting the weapon string
      * @param weaponsString - what weapon to use
@@ -221,13 +236,7 @@ public class rouletteLogic extends RouletteGUI{
     private void setGearString(String gearString) {
         this.gearString = gearString;
     }
-    /**
-     * Setter for character
-     * @param charcterString - what character to play
-     */
-    private void setCharcterString(String charcterString) {
-        this.charcterString = charcterString;
-    }
+
     /**
      * Setter for special rule set
      * @param specialString - the rule to be played
@@ -243,4 +252,15 @@ public class rouletteLogic extends RouletteGUI{
         this.mapChoice = map;
     }
 
+    public String[] getCharacterArray() {
+        return characterArray;
+    }
+
+    public void setCharacterArray(String[] characterArray) {
+        this.characterArray = characterArray;
+    }
+
+    public String getCharacterString() {
+        return characterString;
+    }
 }
