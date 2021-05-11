@@ -45,15 +45,12 @@ public class rouletteLogic extends RouletteGUI{
 
         //Assigns the random loadouts
         randomLoadouts();
-
-        //Updates the strings to the GUI
-        gameUpdate();
     }
 
     /**
      * Method thatupdates all the Strings
      */
-    private  void randomLoadouts(){
+    private void randomLoadouts(){
 
 
         if(dropZone) {
@@ -109,19 +106,6 @@ public class rouletteLogic extends RouletteGUI{
         int rnd = new Random().nextInt(array.length);
         return array[rnd];
     }
-
-    /**
-     * Updates the GUI
-     */
-    public  void gameUpdate() {
-        new RouletteGUI(getWeaponsString(),
-                getMedString(),
-                getDropzoneString(),
-                getGearString(),
-                getCharcterString(),
-                getSpecialString());
-    }
-
 
     //BOOLEANS
 

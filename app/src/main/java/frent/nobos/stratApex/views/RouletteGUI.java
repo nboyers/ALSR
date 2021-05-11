@@ -3,8 +3,6 @@ package frent.nobos.stratApex.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
@@ -17,10 +15,6 @@ import frent.nobos.stratApex.databinding.StratMenuBinding;
  */
 public class RouletteGUI extends AppCompatActivity {
 
-    // String of strats
-    private String weapons, medicals, dropZone,
-            gear, character, specials;
-
     // Main menu but binding so we can update the GUI
     private StratMenuBinding STR_BIND;
 
@@ -32,28 +26,6 @@ public class RouletteGUI extends AppCompatActivity {
      */
     public RouletteGUI(){}
 
-    /**
-     *  Overloaded constructor
-     * @param weapons - weapon rule
-     * @param medicals - medicals rules
-     * @param dropZone - location to drop
-     * @param gear - gear to use
-     * @param character - character to play
-     * @param specials - special rule set
-     */
-    public RouletteGUI(String weapons,
-                       String medicals,
-                       String dropZone,
-                       String gear,
-                       String character,
-                       String specials){
-        setWeapons(weapons);
-        setMedicals(medicals);
-        setDropZone(dropZone);
-        setGear(gear);
-        setCharacter(character);
-        setSpecials(specials);
-    }
 
     /**
      * Method that runs on the creation of
@@ -98,12 +70,12 @@ public class RouletteGUI extends AppCompatActivity {
                     getSpecialSwitch()
             );
 
-            STR_BIND.weaponView.setText(weapons);
-            STR_BIND.medicalView.setText(medicals);
-            STR_BIND.dropzoneView.setText(dropZone);
-            STR_BIND.gearView.setText(gear);
-            STR_BIND.charcterView.setText(character);
-            STR_BIND.specialView.setText(specials);
+            STR_BIND.weaponView.setText(rL.getWeaponsString());
+            STR_BIND.medicalView.setText(rL.getMedString());
+            STR_BIND.dropzoneView.setText(rL.getDropzoneString());
+            STR_BIND.gearView.setText(rL.getGearString());
+            STR_BIND.charcterView.setText(rL.getCharcterString());
+            STR_BIND.specialView.setText(rL.getSpecialString());
     }
 
     /**
@@ -126,55 +98,6 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND.dropzoneSwitch.setChecked(true);
         STR_BIND.gearSwitch.setChecked(true);
         STR_BIND.specialSwitch.setChecked(true);
-    }
-
-
-
-
-
-
-    // SETTERS
-    /**
-     *  Sets the character
-     * @param character - sets which character to use
-     */
-    public void setCharacter(String character) {
-        this.character = character;
-    }
-    /**
-     * Sets the weapon loadout
-     * @param weapons - sets rules for weapons
-     */
-    public void setWeapons(String weapons) {
-        this.weapons = weapons;
-    }
-    /**
-     * sets the medical rules
-     * @param medicals - sets rules for medical items
-     */
-    public void setMedicals(String medicals) {
-        this.medicals = medicals;
-    }
-    /**
-     * Sets where the user needs to land
-     * @param dropZone - sets where to land in a map
-     */
-    public void setDropZone(String dropZone) {
-        this.dropZone = dropZone;
-    }
-    /**
-     * sets what gear to use
-     * @param gear - sets gear rules
-     */
-    public void setGear(String gear) {
-        this.gear = gear;
-    }
-    /**
-     * Sets the special rules
-     * @param specials - sets the special rules
-     */
-    public void setSpecials(String specials) {
-        this.specials = specials;
     }
 
     // GETTERS
