@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import frent.nobos.stratApex.R;
 import frent.nobos.stratApex.databinding.ActivityMainBinding;
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         worldEdge_btn.setOnClickListener(v -> {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
+        });
+        MobileAds.initialize(this, initializationStatus -> {
         });
     }
 

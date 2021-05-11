@@ -1,9 +1,6 @@
 package frent.nobos.stratApex.ViewModels;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
-
 import frent.nobos.stratApex.models.GameModel;
 import frent.nobos.stratApex.views.RouletteGUI;
 
