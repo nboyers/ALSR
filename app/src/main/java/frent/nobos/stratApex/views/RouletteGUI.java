@@ -154,34 +154,24 @@ public class RouletteGUI extends AppCompatActivity {
     }
 
     /**
-     * Method that decides if an ad is shown
-     * @return - true for ad otherwise false
-     */
-    private boolean randomNumber(){
-        Random random = new Random();
-        byte ranAd = (byte) random.nextInt(101);
-        // Clicking ads 40% of the time
-        return ranAd % 5 == 0;
-    }
-
-    /**
      * Updates the GUI for the user once
      * they hit the "Randomizer" Button
      * @param view - the Thing they see
      */
     public void updateGUI(View view) {
-
         rouletteLogic rL = new rouletteLogic();
+        Random random = new Random();
 
 
-            if(randomNumber()){
+            if((random.nextInt(10)) % 3 == 0){
                 if (mInterstitialAd != null) {
                     mInterstitialAd.show(RouletteGUI.this);
+                    Log.d(TAG, "Ad Fired");
                 } else {
-                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    Log.d(TAG, "The interstitial ad wasn't ready yet.");
                 }
 
-            }else {
+            } else {
                 rL.startGame(
                         getMapChoice(),
                         getWeaponSwitch(),
@@ -207,6 +197,7 @@ public class RouletteGUI extends AppCompatActivity {
                 }
 
                 STR_BIND.specialView.setText(rL.getSpecialString());
+                Log.d(TAG, "No ads");
     }
 }
 
