@@ -11,15 +11,24 @@ import frent.nobos.stratApex.views.RouletteGUI;
  * @author Noah Boyers
  */
 public class rouletteLogic extends RouletteGUI{
+    //Map choice to play from
     private String mapChoice;
+
+    //Boolean checks if the user wants to play
     private boolean weapons,dropZone,medicals,gear, character, specials;
 
+    // String for the games
     private String weaponsString ,medString,gearString,specialString, characterString;
 
-    private String[] characterArray = new String[3];
+    //Array of characters (Only supports trios)
+    private final String[] characterArray = new String[3];
 
+    //Talks to the model
     private final GameModel gm = new GameModel();
 
+    /**
+     * Default constructor
+     */
     public rouletteLogic(){}
 
     /**
@@ -52,6 +61,7 @@ public class rouletteLogic extends RouletteGUI{
      */
     private void randomLoadouts(){
 
+        //Checks if the user has the drop area checked
         if(dropZone) {
             switch (mapChoice) {
                 case "Kings Canyon":
@@ -66,11 +76,13 @@ public class rouletteLogic extends RouletteGUI{
                 default:
                     mapChoice = "Drop in the middle of the map";
             }
-            } else  {
-            mapChoice = " ";
+            } else {
+            mapChoice = "SOMETHING WENT REALLY WRONG, " +
+                    "I SHOULD HAVE NEVER SEEN THE LIGHT OF  "
+                    + "DAY";
         }
 
-        // Controls the logic for each category.
+        // Controls the logic for each category - fires if user has the switches checked
         if(weapons) {
             setWeaponsString(getRandom(gm.WEAPONS));
         } else {
@@ -90,22 +102,20 @@ public class rouletteLogic extends RouletteGUI{
             setCharacterString(getRandom(gm.CHARACTERS));
             String firstPos = getCharacterString(); //Gets the position 0 of the array.
 
+            // Loop to get the 3 characters
             for (int i = 0; i < 3; i++){
-                String t = getCharacterString();
-                setCharacterString(getRandom(gm.CHARACTERS));
-                characterArray[i] = getCharacterString();
+
+                String t = getCharacterString(); //Temp name so that the characters dont show up 2x
+
+                setCharacterString(getRandom(gm.CHARACTERS)); // gets random characters
+                characterArray[i] = getCharacterString();    // puts characters in array
 
                 //Checks if the position to the left is the same or the last and the first are
                 //The same
                 if (characterArray[i].equals(t) || characterArray[i].equals(firstPos)) {
-                setCharacterString(getRandom(gm.CHARACTERS));
-                characterArray[i] = getCharacterString();
+                    setCharacterString(getRandom(gm.CHARACTERS));
+                    characterArray[i] = getCharacterString();
                 }
-            }
-        } else {
-            for(int i =0; i<3; i++){
-                setCharacterString("");
-                characterArray[i] = getCharacterString();
             }
         }
         if(specials){
@@ -203,6 +213,11 @@ public class rouletteLogic extends RouletteGUI{
     public String getSpecialString() {
         return specialString;
     }
+
+    /**
+     * Getter f0r the area of the map
+     * @return - area of the map
+     */
     public String getDropzoneString(){
         return mapChoice;
     }
@@ -249,10 +264,18 @@ public class rouletteLogic extends RouletteGUI{
         this.mapChoice = map;
     }
 
+    /**
+     * Getter for the array of characters
+     * @return - gets the 3 characters as an array
+     */
     public String[] getCharacterArray() {
         return characterArray;
     }
 
+    /**
+     * Getter for the character
+     * @return - character string
+     */
     public String getCharacterString() {
         return characterString;
     }
