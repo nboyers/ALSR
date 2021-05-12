@@ -148,9 +148,6 @@ public class RouletteGUI extends AppCompatActivity {
                 mInterstitialAd = null;
             }
         });
-
-
-
     }
 
     /**
