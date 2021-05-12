@@ -253,10 +253,6 @@ public class rouletteLogic extends RouletteGUI{
         return characterArray;
     }
 
-    public void setCharacterArray(String[] characterArray) {
-        this.characterArray = characterArray;
-    }
-
     public String getCharacterString() {
         return characterString;
     }

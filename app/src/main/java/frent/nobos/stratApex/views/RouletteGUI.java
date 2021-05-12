@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -20,9 +19,6 @@ import com.google.android.gms.ads.OnPaidEventListener;
 import com.google.android.gms.ads.ResponseInfo;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -163,7 +159,7 @@ public class RouletteGUI extends AppCompatActivity {
      */
     private boolean randomNumber(){
         Random random = new Random();
-        int ranAd = random.nextInt(101);
+        byte ranAd = (byte) random.nextInt(101);
         // Clicking ads 40% of the time
         return ranAd % 5 == 0;
     }
@@ -177,7 +173,7 @@ public class RouletteGUI extends AppCompatActivity {
 
         rouletteLogic rL = new rouletteLogic();
 
-        STR_BIND.randomButton.setOnClickListener(v -> {
+
             if(randomNumber()){
                 if (mInterstitialAd != null) {
                     mInterstitialAd.show(RouletteGUI.this);
@@ -212,8 +208,8 @@ public class RouletteGUI extends AppCompatActivity {
 
                 STR_BIND.specialView.setText(rL.getSpecialString());
     }
-});
-    }
+}
+
 
     /**
      * Method that resets the view
