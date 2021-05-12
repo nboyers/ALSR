@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
         MobileAds.initialize(this, initializationStatus -> {
         });
+        
     }
 
     /**

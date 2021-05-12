@@ -9,15 +9,20 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.Arrays;
+import java.util.Random;
+
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
 import frent.nobos.stratApex.databinding.StratMenuBinding;
 
@@ -37,7 +42,7 @@ public class RouletteGUI extends AppCompatActivity {
     //THINGY FOR ADS
     private InterstitialAd mInterstitialAd;
 
-    private final String TAG = "ADS LOADER";
+    private final String TAG = "MONETIZATION";
 
     /**
      * Default constructor
@@ -68,13 +73,14 @@ public class RouletteGUI extends AppCompatActivity {
 
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+
+        MobileAds.initialize(this, initializationStatus -> {
         });
+
+        MobileAds.initialize(this, initializationStatus -> {});
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,"ca-app-pub-7542723422099323/2300638122", adRequest, new InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-7542723422099323/4563645866", adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 // The mInterstitialAd reference will be null until
@@ -90,6 +96,42 @@ public class RouletteGUI extends AppCompatActivity {
                 mInterstitialAd = null;
             }
         });
+
+        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                // Called when fullscreen content is dismissed.
+                Log.d("TAG", "The ad was dismissed.");
+            }
+
+            @Override
+            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                // Called when fullscreen content failed to show.
+                Log.d("TAG", "The ad failed to show.");
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                // Called when fullscreen content is shown.
+                // Make sure to set your reference to null so you don't
+                // show it a second time.
+                mInterstitialAd = null;
+                Log.d("TAG", "The ad was shown.");
+            }
+        });
+
+
+    }
+
+    /**
+     * Method that decides if an ad is shown
+     * @return - true for ad otherwise false
+     */
+    private boolean randomNumber(){
+        Random random = new Random();
+        int ranAd = random.nextInt(101);
+        // Clicking ads 40% of the time
+        return ranAd % 5 == 0;
     }
 
     /**
@@ -100,7 +142,15 @@ public class RouletteGUI extends AppCompatActivity {
     public void updateGUI(View view) {
         rouletteLogic rL = new rouletteLogic();
 
-        rL.startGame(
+        if(randomNumber()){
+            if (mInterstitialAd != null) {
+                mInterstitialAd.show(RouletteGUI.this);
+            } else {
+                Log.d("TAG", "The interstitial ad wasn't ready yet.");
+            }
+
+        }else {
+            rL.startGame(
                     getMapChoice(),
                     getWeaponSwitch(),
                     getMedicalSwitch(),
@@ -109,6 +159,7 @@ public class RouletteGUI extends AppCompatActivity {
                     getCharacterSwitch(),
                     getSpecialSwitch());
 
+            //UPDATES THE GUI
             STR_BIND.weaponView.setText(rL.getWeaponsString());
             STR_BIND.medicalView.setText(rL.getMedString());
             STR_BIND.dropzoneView.setText(rL.getDropzoneString());
@@ -119,8 +170,9 @@ public class RouletteGUI extends AppCompatActivity {
             } else {
                 STR_BIND.charcterView.setText(Arrays.toString(rL.getCharacterArray()));
             }
-
             STR_BIND.specialView.setText(rL.getSpecialString());
+        }
+
     }
 
     /**
