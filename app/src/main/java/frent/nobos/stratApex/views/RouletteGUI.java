@@ -1,12 +1,14 @@
 package frent.nobos.stratApex.views;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdError;
@@ -14,6 +16,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnPaidEventListener;
+import com.google.android.gms.ads.ResponseInfo;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.MobileAds;
@@ -42,6 +46,7 @@ public class RouletteGUI extends AppCompatActivity {
     //THINGY FOR ADS
     private InterstitialAd mInterstitialAd;
 
+    //LOGGING FOR ADS
     private final String TAG = "MONETIZATION";
 
     /**
@@ -74,13 +79,64 @@ public class RouletteGUI extends AppCompatActivity {
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
 
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+        // Creating an ad object so we dont get null pointers
+        mInterstitialAd = new InterstitialAd() {
+            @NonNull
+            @Override
+            public String getAdUnitId() {
+                return null;
+            }
 
+            @Override
+            public void show(@NonNull Activity activity) {
+
+            }
+
+            @Override
+            public void setFullScreenContentCallback(FullScreenContentCallback fullScreenContentCallback) {
+
+            }
+
+            @Nullable
+            @Override
+            public FullScreenContentCallback getFullScreenContentCallback() {
+                return null;
+            }
+
+            @Override
+            public void setImmersiveMode(boolean b) {
+
+            }
+
+            @NonNull
+            @Override
+            public ResponseInfo getResponseInfo() {
+                return null;
+            }
+
+            @Override
+            public void setOnPaidEventListener(@Nullable  OnPaidEventListener onPaidEventListener) {
+
+            }
+
+            @Nullable
+
+            @Override
+            public OnPaidEventListener getOnPaidEventListener() {
+                return null;
+            }
+        };
+
+        //AD CONSTRUCTOR
         MobileAds.initialize(this, initializationStatus -> {});
+
+        //AD REQUESTING
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,"ca-app-pub-7542723422099323/4563645866", adRequest, new InterstitialAdLoadCallback() {
+
+        //I have no idea google set this up so Im just here for the ride
+        // ca-app-pub-3940256099942544/1033173712 is my account code
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 // The mInterstitialAd reference will be null until
@@ -97,28 +153,6 @@ public class RouletteGUI extends AppCompatActivity {
             }
         });
 
-        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-            @Override
-            public void onAdDismissedFullScreenContent() {
-                // Called when fullscreen content is dismissed.
-                Log.d("TAG", "The ad was dismissed.");
-            }
-
-            @Override
-            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                // Called when fullscreen content failed to show.
-                Log.d("TAG", "The ad failed to show.");
-            }
-
-            @Override
-            public void onAdShowedFullScreenContent() {
-                // Called when fullscreen content is shown.
-                // Make sure to set your reference to null so you don't
-                // show it a second time.
-                mInterstitialAd = null;
-                Log.d("TAG", "The ad was shown.");
-            }
-        });
 
 
     }
@@ -140,39 +174,45 @@ public class RouletteGUI extends AppCompatActivity {
      * @param view - the Thing they see
      */
     public void updateGUI(View view) {
+
         rouletteLogic rL = new rouletteLogic();
 
-        if(randomNumber()){
-            if (mInterstitialAd != null) {
-                mInterstitialAd.show(RouletteGUI.this);
-            } else {
-                Log.d("TAG", "The interstitial ad wasn't ready yet.");
-            }
+        STR_BIND.randomButton.setOnClickListener(v -> {
+            if(randomNumber()){
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(RouletteGUI.this);
+                } else {
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                }
 
-        }else {
-            rL.startGame(
-                    getMapChoice(),
-                    getWeaponSwitch(),
-                    getMedicalSwitch(),
-                    getDropzoneSwitch(),
-                    getGearSwitch(),
-                    getCharacterSwitch(),
-                    getSpecialSwitch());
+            }else {
+                rL.startGame(
+                        getMapChoice(),
+                        getWeaponSwitch(),
+                        getMedicalSwitch(),
+                        getDropzoneSwitch(),
+                        getGearSwitch(),
+                        getCharacterSwitch(),
+                        getSpecialSwitch()
+                );
 
-            //UPDATES THE GUI
-            STR_BIND.weaponView.setText(rL.getWeaponsString());
-            STR_BIND.medicalView.setText(rL.getMedString());
-            STR_BIND.dropzoneView.setText(rL.getDropzoneString());
-            STR_BIND.gearView.setText(rL.getGearString());
+        //UPDATES THE GUI
+                STR_BIND.weaponView.setText(rL.getWeaponsString());
+                STR_BIND.medicalView.setText(rL.getMedString());
+                STR_BIND.dropzoneView.setText(rL.getDropzoneString());
+                STR_BIND.gearView.setText(rL.getGearString());
 
-            if(!STR_BIND.characterSwitch.isChecked()){
-                STR_BIND.charcterView.setText("");
-            } else {
-                STR_BIND.charcterView.setText(Arrays.toString(rL.getCharacterArray()));
-            }
-            STR_BIND.specialView.setText(rL.getSpecialString());
-        }
 
+                if(!STR_BIND.characterSwitch.isChecked()){
+                    STR_BIND.charcterView.setText("");
+
+                } else {
+                    STR_BIND.charcterView.setText(Arrays.toString(rL.getCharacterArray()));
+                }
+
+                STR_BIND.specialView.setText(rL.getSpecialString());
+    }
+});
     }
 
     /**

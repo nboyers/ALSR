@@ -53,11 +53,7 @@ public class MainActivity extends AppCompatActivity {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
         });
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        
     }
-
     /**
      * Method that takes the user to the next activity
      * while passing which map they are on
