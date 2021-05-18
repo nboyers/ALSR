@@ -39,13 +39,13 @@ public class rouletteLogic extends RouletteGUI{
                                  boolean character, boolean specials) {
 
         //Gets the boolean logic
-        setMapChoice(mapChoice);
-        setDropZone(dropZone);
-        setWeapons(weapons);
-        setMedicals(medicals);
-        setGear(gear);
-        setCharacter(character);
-        setSpecials(specials);
+        setMapChoice(mapChoice);   // String
+        setWeapons(weapons);      // Bool
+        setMedicals(medicals);    // Bool
+        setDropZone(dropZone);    // Bool
+        setGear(gear);            // Bool
+        setCharacter(character);  // Bool
+        setSpecials(specials);    // Bool
 
         //Assigns the random loadouts
         randomLoadouts();
@@ -71,10 +71,6 @@ public class rouletteLogic extends RouletteGUI{
                 default:
                     mapChoice = "Drop in the middle of the map";
             }
-            } else {
-            mapChoice = "SOMETHING WENT REALLY WRONG, " +
-                    "I SHOULD HAVE NEVER SEEN THE LIGHT OF  "
-                    + "DAY";
         }
 
         // Controls the logic for each category - fires if user has the switches checked
@@ -112,7 +108,6 @@ public class rouletteLogic extends RouletteGUI{
                     characterArray[i] = getCharacterString();
                 }
             }
-
         }
         if(specials){
             setSpecialString(getRandom(gm.SPECIALS));

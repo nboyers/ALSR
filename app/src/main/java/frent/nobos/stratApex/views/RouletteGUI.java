@@ -153,11 +153,11 @@ public class RouletteGUI extends AppCompatActivity {
             if((random.nextInt(10)) % 3 == 0){
                 if (mInterstitialAd != null) {
                     mInterstitialAd.show(RouletteGUI.this);
-                 //   Log.d(TAG, "Ad Fired");
-                }  //  Log.d(TAG, "The interstitial ad wasn't ready yet.");
+                }
             } else {
                 rL.startGame(
                         getMapChoice(),
+
                         getWeaponSwitch(),
                         getMedicalSwitch(),
                         getDropzoneSwitch(),
@@ -175,13 +175,11 @@ public class RouletteGUI extends AppCompatActivity {
 
                 if(!STR_BIND.characterSwitch.isChecked()){
                     STR_BIND.charcterView.setText("");
-
                 } else {
                     STR_BIND.charcterView.setText(Arrays.toString(rL.getCharacterArray()));
                 }
 
                 STR_BIND.specialView.setText(rL.getSpecialString());
-             //   Log.d(TAG, "No ads");
     }
 }
 
