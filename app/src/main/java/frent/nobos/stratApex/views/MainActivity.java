@@ -54,10 +54,4 @@ public class MainActivity extends AppCompatActivity {
          intent.putExtra(TEXT_TO_SEND, sendToActivity);
          startActivity(intent);
     }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-    }
-
 }
