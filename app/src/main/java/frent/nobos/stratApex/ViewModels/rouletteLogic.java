@@ -27,11 +27,6 @@ public class rouletteLogic extends RouletteGUI{
     private final GameModel gm = new GameModel();
 
     /**
-     * Default constructor
-     */
-    public rouletteLogic(){}
-
-    /**
      * Method that gets the info from the GUI to start logic
      * @param weapons - true / false to weapon option
      * @param medicals - true / false to medical option
@@ -117,6 +112,7 @@ public class rouletteLogic extends RouletteGUI{
                     characterArray[i] = getCharacterString();
                 }
             }
+
         }
         if(specials){
             setSpecialString(getRandom(gm.SPECIALS));

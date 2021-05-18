@@ -42,15 +42,6 @@ public class RouletteGUI extends AppCompatActivity {
     //THINGY FOR ADS
     private InterstitialAd mInterstitialAd;
 
-    //LOGGING FOR ADS
-    private final String TAG = "MONETIZATION";
-
-    /**
-     * Default constructor
-     */
-    public RouletteGUI(){}
-
-
     /**
      * Method that runs on the creation of
      * the start of the app
@@ -138,13 +129,13 @@ public class RouletteGUI extends AppCompatActivity {
                 // The mInterstitialAd reference will be null until
                 // an ad is loaded.
                 mInterstitialAd = interstitialAd;
-                Log.i(TAG, "onAdLoaded");
+            //    Log.i(TAG, "onAdLoaded");
             }
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 // Handle the error
-                Log.i(TAG, loadAdError.getMessage());
+              //  Log.i(TAG, loadAdError.getMessage());
                 mInterstitialAd = null;
             }
         });
@@ -163,11 +154,8 @@ public class RouletteGUI extends AppCompatActivity {
             if((random.nextInt(10)) % 3 == 0){
                 if (mInterstitialAd != null) {
                     mInterstitialAd.show(RouletteGUI.this);
-                    Log.d(TAG, "Ad Fired");
-                } else {
-                    Log.d(TAG, "The interstitial ad wasn't ready yet.");
-                }
-
+                 //   Log.d(TAG, "Ad Fired");
+                }  //  Log.d(TAG, "The interstitial ad wasn't ready yet.");
             } else {
                 rL.startGame(
                         getMapChoice(),
@@ -194,7 +182,7 @@ public class RouletteGUI extends AppCompatActivity {
                 }
 
                 STR_BIND.specialView.setText(rL.getSpecialString());
-                Log.d(TAG, "No ads");
+             //   Log.d(TAG, "No ads");
     }
 }
 
