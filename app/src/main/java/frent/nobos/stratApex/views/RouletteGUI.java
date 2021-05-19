@@ -128,13 +128,11 @@ public class RouletteGUI extends AppCompatActivity {
                 // The mInterstitialAd reference will be null until
                 // an ad is loaded.
                 mInterstitialAd = interstitialAd;
-            //    Log.i(TAG, "onAdLoaded");
             }
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 // Handle the error
-              //  Log.i(TAG, loadAdError.getMessage());
                 mInterstitialAd = null;
             }
         });
