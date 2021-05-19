@@ -1,26 +1,19 @@
 package frent.nobos.stratApex.views;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnPaidEventListener;
-import com.google.android.gms.ads.ResponseInfo;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import frent.nobos.stratApex.ViewModels.rouletteLogic;
 import frent.nobos.stratApex.databinding.StratMenuBinding;
@@ -39,7 +32,7 @@ public class RouletteGUI extends AppCompatActivity {
     private String mapChoice;
 
     //THINGY FOR ADS
-    private InterstitialAd mInterstitialAd;
+    private AdView mAdView;
 
     /**
      * Method that runs on the creation of
@@ -65,77 +58,29 @@ public class RouletteGUI extends AppCompatActivity {
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
 
-        // Creating an ad object so we dont get null pointers
-        mInterstitialAd = new InterstitialAd() {
-            @NonNull
-            @Override
-            public String getAdUnitId() {
-                return null;
-            }
+        //ADS
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
 
-            @Override
-            public void show(@NonNull Activity activity) {
+        // Create a banner ad. The ad size and ad unit ID must be set before calling loadAd.
+        mAdView = new AdView(this);
+        mAdView.setAdSize(AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, 2));
+        mAdView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
 
-            }
+        // Create an ad request.
+        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
 
-            @Override
-            public void setFullScreenContentCallback(FullScreenContentCallback fullScreenContentCallback) {
+        // Add the AdView to the view hierarchy.
+        layout.addView(mAdView);
 
-            }
-
-            @Nullable
-            @Override
-            public FullScreenContentCallback getFullScreenContentCallback() {
-                return null;
-            }
-
-            @Override
-            public void setImmersiveMode(boolean b) {
-
-            }
-
-            @NonNull
-            @Override
-            public ResponseInfo getResponseInfo() {
-                return null;
-            }
-
-            @Override
-            public void setOnPaidEventListener(@Nullable  OnPaidEventListener onPaidEventListener) {
-
-            }
-
-            @Nullable
-
-            @Override
-            public OnPaidEventListener getOnPaidEventListener() {
-                return null;
-            }
-        };
-
-        //AD CONSTRUCTOR
-        MobileAds.initialize(this, initializationStatus -> {});
-
-        //AD REQUESTING
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-
-        //I have no idea google set this up so Im just here for the ride
-        // ca-app-pub-3940256099942544/1033173712 is my account code
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                // The mInterstitialAd reference will be null until
-                // an ad is loaded.
-                mInterstitialAd = interstitialAd;
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // Handle the error
-                mInterstitialAd = null;
-            }
+        // Start loading the ad.
+        mAdView.loadAd(adRequestBuilder.build());
+        MobileAds.initialize(this, initializationStatus -> {
         });
+
+        mAdView = STR_BIND.adView2;
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     /**
@@ -145,14 +90,6 @@ public class RouletteGUI extends AppCompatActivity {
      */
     public void updateGUI(View view) {
         rouletteLogic rL = new rouletteLogic();
-        Random random = new Random();
-
-
-            if((random.nextInt(10)) % 3 == 0){
-                if (mInterstitialAd != null) {
-                    mInterstitialAd.show(RouletteGUI.this);
-                }
-            } else {
                 rL.startGame(
                         getMapChoice(),
 
@@ -179,7 +116,7 @@ public class RouletteGUI extends AppCompatActivity {
 
                 STR_BIND.specialView.setText(rL.getSpecialString());
     }
-}
+
 
 
     /**
@@ -203,6 +140,27 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND.gearSwitch.setChecked(true);
         STR_BIND.specialSwitch.setChecked(true);
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Resume the AdView.
+        mAdView.resume();
+    }
+
+    @Override
+    public void onPause() {
+        // Pause the AdView.
+        mAdView.pause();
+
+        super.onPause();
+    }
+
+
+
+
+
+
 
     // GETTERS
     /**
@@ -258,6 +216,7 @@ public class RouletteGUI extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
+        mAdView.destroy();
     }
 
 

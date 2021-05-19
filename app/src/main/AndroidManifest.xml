@@ -14,14 +14,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.RouletteGUI"
-            android:parentActivityName=".views.MainActivity"/>
-
-        <!--This meta-data tag is required to use Google Play Services.-->
+        <activity
+            android:name=".views.RouletteGUI"
+            android:parentActivityName=".views.MainActivity" /> <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7542723422099323~9376703436"/>
+            android:value="ca-app-pub-7542723422099323~9376703436" />
     </application>
 
 </manifest>
-
