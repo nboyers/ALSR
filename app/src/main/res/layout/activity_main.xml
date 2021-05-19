@@ -9,7 +9,6 @@
     tools:viewBindingIgnore="true">
 
     <TextView
-        android:id="@+id/Map_Choice_MainMenu"
         android:layout_width="287dp"
         android:layout_height="81dp"
         android:layout_marginStart="16dp"
@@ -18,7 +17,7 @@
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
         android:inputType="none"
-        android:text="@string/choose_your_map"
+        android:text="@string/map_choice"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/kingsCanyon_button"
         app:layout_constraintEnd_toEndOf="parent"

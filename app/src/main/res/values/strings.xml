@@ -12,19 +12,9 @@
 
     <string name="title_activity_main_menu" tools:ignore="Typos">ALSR</string>
 
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="suggestion_Fab">Suggestions</string>
     <string name="back_Button">Back</string>
     <string name="map_choice">CHOOSE YOUR MAP</string>
     <string name="olympus">Olympus</string>
     <string name="world_s_edge">Worlds Edge</string>
     <string name="kings_canyon">Kings Canyon</string>
-    <string name="choose_your_map">Choose Your Map</string>
 </resources>
