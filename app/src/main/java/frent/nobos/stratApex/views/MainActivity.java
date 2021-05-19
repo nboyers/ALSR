@@ -2,7 +2,10 @@ package frent.nobos.stratApex.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String TEXT_TO_SEND = "frent.nobos.stratApex";
     private Button King_btn,Oly_btm,worldEdge_btn;
     private String sendToActivity;
+
     //THINGY FOR ADS
-    private AdView mAdView;
+    private FrameLayout adContainerView;
+    private AdView adView;
 
     /**
      *
@@ -54,51 +59,68 @@ public class MainActivity extends AppCompatActivity {
             sendToActivity = worldEdge_btn.getText().toString();
             goToActivity();
         });
-
-        // ADS
-        //ADS
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        // Create a banner ad. The ad size and ad unit ID must be set before calling loadAd.
-        mAdView = new AdView(this);
-        mAdView.setAdSize(AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, 2));
-        mAdView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
-
-        // Create an ad request.
-        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
-
-        // Add the AdView to the view hierarchy.
-        layout.addView(mAdView);
-
-        // Start loading the ad.
-        mAdView.loadAd(adRequestBuilder.build());
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        adContainerView = findViewById(R.id.ad_view_container_main);
+        adView = new AdView(this);
+        adView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
+        adContainerView.addView(adView);
+        loadBanner();
     }
+
+
+    /**
+     * Load the View with ads
+     */
+    private void loadBanner() {
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        AdSize adSize = getAdSize();
+
+        // Set the adaptive ad size on the ad view.
+        adView.setAdSize(adSize);
+
+        //  Start loading the ad in the background.
+        adView.loadAd(adRequest);
+    }
+
+    /**
+     * Method that makes the ads fit in the user's screen
+     * @return - size of the screen for ads
+     */
+    private AdSize getAdSize() {
+        //  Determine the screen width (less decorations) to use for the ad width.
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        //  Get adaptive ad size and return for setting on the ad view.
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         // Resume the AdView.
-        mAdView.resume();
+        adView.resume();
     }
 
     @Override
     public void onPause() {
         // Pause the AdView.
-        mAdView.pause();
+        adView.pause();
         super.onPause();
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        mAdView.destroy();
+        adView.destroy();
     }
+
     /**
      * Method that takes the user to the next activity
      * while passing which map they are on

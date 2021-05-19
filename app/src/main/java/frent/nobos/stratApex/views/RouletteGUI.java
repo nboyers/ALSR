@@ -3,7 +3,10 @@ package frent.nobos.stratApex.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import java.util.Arrays;
 
@@ -32,7 +34,8 @@ public class RouletteGUI extends AppCompatActivity {
     private String mapChoice;
 
     //THINGY FOR ADS
-    private AdView mAdView;
+    private FrameLayout adContainerView;
+    private AdView adView;
 
     /**
      * Method that runs on the creation of
@@ -58,30 +61,48 @@ public class RouletteGUI extends AppCompatActivity {
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
 
-        //ADS
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        // Create a banner ad. The ad size and ad unit ID must be set before calling loadAd.
-        mAdView = new AdView(this);
-        mAdView.setAdSize(AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, 2));
-        mAdView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
-
-        // Create an ad request.
-        AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
-
-        // Add the AdView to the view hierarchy.
-        layout.addView(mAdView);
-
-        // Start loading the ad.
-        mAdView.loadAd(adRequestBuilder.build());
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-
-        mAdView = STR_BIND.adView2;
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        adContainerView = STR_BIND.adViewContainer;
+        adView = new AdView(this);
+        adView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
+        adContainerView.addView(adView);
+        loadBanner();
     }
+
+
+    /**
+     * Load the View with ads
+     */
+    private void loadBanner() {
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        AdSize adSize = getAdSize();
+
+        // Set the adaptive ad size on the ad view.
+        adView.setAdSize(adSize);
+
+        //  Start loading the ad in the background.
+        adView.loadAd(adRequest);
+    }
+
+    /**
+     * Method that makes the ads fit in the user's screen
+     * @return - size of the screen for ads
+     */
+    private AdSize getAdSize() {
+        //  Determine the screen width (less decorations) to use for the ad width.
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        //  Get adaptive ad size and return for setting on the ad view.
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
+
 
     /**
      * Updates the GUI for the user once
@@ -145,13 +166,13 @@ public class RouletteGUI extends AppCompatActivity {
         super.onResume();
 
         // Resume the AdView.
-        mAdView.resume();
+        adView.resume();
     }
 
     @Override
     public void onPause() {
         // Pause the AdView.
-        mAdView.pause();
+        adView.pause();
 
         super.onPause();
     }
@@ -216,7 +237,7 @@ public class RouletteGUI extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        mAdView.destroy();
+        adView.destroy();
     }
 
 

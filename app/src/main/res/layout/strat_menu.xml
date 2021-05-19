@@ -99,12 +99,12 @@
         android:onClick="updateGUI"
         android:text="@string/randomize" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView2"
+    <FrameLayout
+        android:id="@+id/ad_view_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-7542723422099323/4137916678"/>
+        android:layout_height="match_parent">
+    </FrameLayout>
+
 </LinearLayout>
 
 
