@@ -18,19 +18,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/weapons" />
+        android:text="@string/weapons"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/weaponView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/medicalsSwitch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/medicals" />
+        android:text="@string/medicals"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/medicalView"
@@ -42,7 +47,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/dropzone" />
+        android:text="@string/dropzone"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/dropzoneView"
@@ -54,7 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/gear" />
+        android:text="@string/gear"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/gearView"
@@ -66,7 +75,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/character" />
+        android:text="@string/character"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/charcterView"
@@ -78,7 +89,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/specials" />
+        android:text="@string/specials"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/specialView"
@@ -90,14 +103,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="resetButton"
-        android:text="@string/reset_button" />
+        android:text="@string/reset_button"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/randomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="updateGUI"
-        android:text="@string/randomize" />
+        android:text="@string/randomize"
+        android:textStyle="bold"/>
 
     <FrameLayout
         android:id="@+id/ad_view_container"

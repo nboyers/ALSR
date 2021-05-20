@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.FirebaseApp;
 
 import java.util.Arrays;
 
@@ -33,8 +34,6 @@ public class RouletteGUI extends AppCompatActivity {
     //name of the map they want to do the strat on
     private String mapChoice;
 
-    //THINGY FOR ADS
-    private FrameLayout adContainerView;
     private AdView adView;
 
     /**
@@ -49,6 +48,7 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND = StratMenuBinding.inflate(getLayoutInflater());
         View view = STR_BIND.getRoot();
         setContentView(view);
+        FirebaseApp.initializeApp(this);
 
         //Starts all the weapon switches to be on
         STR_BIND.weaponsSwitch.setChecked(true);
@@ -61,7 +61,8 @@ public class RouletteGUI extends AppCompatActivity {
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
 
-        adContainerView = STR_BIND.adViewContainer;
+        //THINGY FOR ADS
+        FrameLayout adContainerView = STR_BIND.adViewContainer;
         adView = new AdView(this);
         adView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
         adContainerView.addView(adView);
