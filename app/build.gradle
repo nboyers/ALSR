@@ -13,7 +13,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "frent.nobos.ApexStrat"
+        applicationId "frent.nobos.stratApex"
         minSdkVersion 22
         targetSdkVersion 30
         versionCode 1
