@@ -64,7 +64,7 @@ public class RouletteGUI extends AppCompatActivity {
         //THINGY FOR ADS
         FrameLayout adContainerView = STR_BIND.adViewContainer;
         adView = new AdView(this);
-        adView.setAdUnitId("ca-app-pub-7542723422099323/4137916678");
+        adView.setAdUnitId("ca-app-pub-7542723422099323/8668413968");
         adContainerView.addView(adView);
         loadBanner();
     }
