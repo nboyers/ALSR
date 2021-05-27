@@ -13,8 +13,9 @@
     <string name="title_activity_main_menu" tools:ignore="Typos">ALSR</string>
 
     <string name="back_Button">Back</string>
-    <string name="map_choice">CHOOSE YOUR MAP</string>
+    <string name="map_choice">Map Selection</string>
     <string name="olympus">Olympus</string>
     <string name="world_s_edge">Worlds Edge</string>
     <string name="kings_canyon">Kings Canyon</string>
+    <string name="title_activity_strat_menu">strat_menu</string>
 </resources>

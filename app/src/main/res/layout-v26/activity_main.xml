@@ -4,28 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/apexbackround"
     tools:context="views.MainActivity"
-    tools:viewBindingIgnore="true">
+    tools:viewBindingIgnore="true"
+    android:background="@drawable/apexbackround">
 
     <TextView
         android:layout_width="287dp"
         android:layout_height="81dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="68dp"
+        android:font="@font/duke_fill"
         android:fontFamily="@font/blocktastic"
+        android:fontWeight="700"
         android:gravity="center_horizontal"
         android:inputType="none"
         android:text="@string/map_choice"
-        android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/kingsCanyon_button"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/kingsCanyon_button"
@@ -66,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/olympus_Button"
         app:layout_constraintVertical_bias="0.005" />
+
     <FrameLayout
         android:id="@+id/ad_view_container_main"
         android:layout_width="311dp"
@@ -77,7 +74,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/worldsEdge_Button">
+        app:layout_constraintTop_toBottomOf="@+id/worldsEdge_Button"
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 

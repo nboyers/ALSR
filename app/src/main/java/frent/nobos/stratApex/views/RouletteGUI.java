@@ -57,6 +57,7 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND.dropzoneSwitch.setChecked(true);
         STR_BIND.gearSwitch.setChecked(true);
         STR_BIND.specialSwitch.setChecked(true);
+        STR_BIND.randomButton.callOnClick();
 
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);

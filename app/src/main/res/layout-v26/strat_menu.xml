@@ -22,7 +22,7 @@
         android:text="@string/weapons"
         android:textAllCaps="true"
         android:textStyle="bold"
-        />
+        android:font="@font/duke_fill" />
 
     <TextView
         android:id="@+id/weaponView"
