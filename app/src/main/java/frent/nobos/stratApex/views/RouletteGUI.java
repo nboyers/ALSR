@@ -7,7 +7,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +24,14 @@ import frent.nobos.stratApex.databinding.StratMenuBinding;
  * Strat Roulette Class that controls the GUI
  * Last Edited: 2021-05-11
  * @author Noah Boyers
+ */
+
+/*
+*
+* TODO -
+*  1. Fix Button color from default
+*  2. Change strat colors to be see-able
+*  3. Change the Header to not be purple.
  */
 public class RouletteGUI extends AppCompatActivity {
 

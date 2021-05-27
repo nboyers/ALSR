@@ -11,10 +11,7 @@
     <TextView
         android:layout_width="287dp"
         android:layout_height="81dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/blocktastic"
         android:gravity="center_horizontal"
         android:inputType="none"
@@ -47,11 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="308dp"
         android:text="@string/olympus"
+        android:textColor="@color/white"
+        android:background="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kingsCanyon_button"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/kingsCanyon_button" />
 
     <Button
         android:id="@+id/worldsEdge_Button"

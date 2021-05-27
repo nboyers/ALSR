@@ -1,6 +1,7 @@
 package frent.nobos.stratApex.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
+
             super.onCreate(savedInstanceState);
             FirebaseApp.initializeApp(this);
 
@@ -68,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
             adView.setAdUnitId("ca-app-pub-7542723422099323/7148228987");
             adContainerView.addView(adView);
             loadBanner();
-        }catch (Exception e){
-            Log.d(FAIL,"Could not pass info");
-        }
     }
 
 

@@ -12,16 +12,16 @@
         android:layout_width="287dp"
         android:layout_height="81dp"
         android:layout_marginTop="68dp"
-        android:font="@font/duke_fill"
         android:fontFamily="@font/blocktastic"
         android:fontWeight="700"
         android:gravity="center_horizontal"
         android:inputType="none"
         android:text="@string/map_choice"
-        android:textSize="40sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538"/>
 
     <Button
         android:id="@+id/kingsCanyon_button"
