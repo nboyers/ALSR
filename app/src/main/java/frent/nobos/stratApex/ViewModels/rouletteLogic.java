@@ -59,9 +59,9 @@ public class rouletteLogic extends RouletteGUI{
         //Checks if the user has the drop area checked
         if(dropZone) {
             switch (mapChoice) {
-                case "Kings Canyon":
-                    mapChoice = getRandom(gm.KINGS_CANYON);
-                    break;
+                //case "Kings Canyon":
+                  //  mapChoice = getRandom(gm.KINGS_CANYON);
+                 //   break;
                 case "Olympus":
                     mapChoice = getRandom(gm.OLYMPUS);
                     break;

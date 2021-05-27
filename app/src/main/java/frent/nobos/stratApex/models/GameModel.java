@@ -51,12 +51,13 @@ public class GameModel {
             "No comms! You cannot communicate with your team. Even if you go down you silly Mirage!"
     };
 
-
+/*
+DOES NOT NEED FOR THE TIME BEING AND WASTING MEMORY
     public final String[] KINGS_CANYON = {"Crash Site", "Water/Caustic Treatment", "Broken Relay",
             "Artillery", "Airbase", "Hot Zone", "Runoff", "Salvage" , "Gauntlet", "Spotted Lake" ,
             "The Pit" , "Bunker", "Hydro Dam" , "Repulsor", "Labs", "Swamps",
             "The Cage"};
-
+*/
     public final String[] OLYMPUS = {"Oasis" , "Turbine" , "Power Grid" , "Energy Depot" ,
             "Hammond Labs" , "Grow Towers" , "Gardens" , "Rift" , "Far-Left of Phase Runner" ,
             "Estates" , "Middle of Phase Runner" , "Elysium" , "Hydroponics" , "Bonsai Plaza" ,

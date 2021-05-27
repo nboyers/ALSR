@@ -3,6 +3,7 @@ package frent.nobos.stratApex.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -30,9 +31,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TEXT_TO_SEND = "frent.nobos.stratApex";
     private Button King_btn,Oly_btm,worldEdge_btn;
     private String sendToActivity;
+    private String FAIL = "FAILED";
 
-    //THINGY FOR ADS
-    private FrameLayout adContainerView;
     private AdView adView;
 
     /**
@@ -41,31 +41,36 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this);
+        try {
+            super.onCreate(savedInstanceState);
+            FirebaseApp.initializeApp(this);
 
-        setContentView(R.layout.activity_main);
-        King_btn = findViewById(R.id.kingsCanyon_button);
-        Oly_btm = findViewById(R.id.olympus_Button);
-        worldEdge_btn = findViewById(R.id.worldsEdge_Button);
+            setContentView(R.layout.activity_main);
+            King_btn = findViewById(R.id.kingsCanyon_button);
+            Oly_btm = findViewById(R.id.olympus_Button);
+            worldEdge_btn = findViewById(R.id.worldsEdge_Button);
 
-        King_btn.setOnClickListener(v -> {
-            sendToActivity = King_btn.getText().toString();
-            goToActivity();
-        });
-        Oly_btm.setOnClickListener(v -> {
-            sendToActivity = Oly_btm.getText().toString();
-            goToActivity();
-        });
-        worldEdge_btn.setOnClickListener(v -> {
-            sendToActivity = worldEdge_btn.getText().toString();
-            goToActivity();
-        });
-        adContainerView = findViewById(R.id.ad_view_container_main);
-        adView = new AdView(this);
-        adView.setAdUnitId("ca-app-pub-7542723422099323/8668413968");
-        adContainerView.addView(adView);
-        loadBanner();
+            King_btn.setOnClickListener(v -> {
+                sendToActivity = King_btn.getText().toString();
+                goToActivity();
+            });
+            Oly_btm.setOnClickListener(v -> {
+                sendToActivity = Oly_btm.getText().toString();
+                goToActivity();
+            });
+            worldEdge_btn.setOnClickListener(v -> {
+                sendToActivity = worldEdge_btn.getText().toString();
+                goToActivity();
+            });
+            //THINGY FOR ADS
+            FrameLayout adContainerView = findViewById(R.id.ad_view_container_main);
+            adView = new AdView(this);
+            adView.setAdUnitId("ca-app-pub-7542723422099323/7148228987");
+            adContainerView.addView(adView);
+            loadBanner();
+        }catch (Exception e){
+            Log.d(FAIL,"Could not pass info");
+        }
     }
 
 

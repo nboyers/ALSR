@@ -57,7 +57,6 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND.dropzoneSwitch.setChecked(true);
         STR_BIND.gearSwitch.setChecked(true);
         STR_BIND.specialSwitch.setChecked(true);
-        STR_BIND.randomButton.callOnClick();
 
         Intent intent = getIntent();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
@@ -65,7 +64,7 @@ public class RouletteGUI extends AppCompatActivity {
         //THINGY FOR ADS
         FrameLayout adContainerView = STR_BIND.adViewContainer;
         adView = new AdView(this);
-        adView.setAdUnitId("ca-app-pub-7542723422099323/8668413968");
+        adView.setAdUnitId("ca-app-pub-7542723422099323/7148228987");
         adContainerView.addView(adView);
         loadBanner();
     }
