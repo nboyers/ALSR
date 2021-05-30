@@ -12,7 +12,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     tools:context="views.RouletteGUI"
-    android:background="@drawable/apexbackround">
+    android:background="@drawable/abg">
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/weaponsSwitch"
