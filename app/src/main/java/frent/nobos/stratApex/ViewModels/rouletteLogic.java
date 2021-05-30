@@ -21,7 +21,7 @@ public class rouletteLogic extends RouletteGUI{
     private String weaponsString ,medString,gearString,specialString, characterString;
 
     //Array of characters (Only supports trios)
-    private final String[] characterArray = new String[3];
+    private String[] characterArray = new String[3];
 
     //Talks to the model
     private final GameModel gm = new GameModel();
@@ -93,23 +93,28 @@ public class rouletteLogic extends RouletteGUI{
         }
         if(character) {
             setCharacterString(getRandom(gm.CHARACTERS));
-            String firstPos = getCharacterString(); //Gets the position 0 of the array.
+            String firstPos = getCharacterString();
 
-            // Loop to get the 3 characters
-            for (int i = 0; i < 3; i++){
+            setCharacterString(getRandom(gm.CHARACTERS));
+            String secondPos = getCharacterString();
 
-                String t = getCharacterString(); //Temp name so that the characters dont show up 2x
+            setCharacterString(getRandom(gm.CHARACTERS));
+            String thirdPos = getCharacterString();
 
-                setCharacterString(getRandom(gm.CHARACTERS)); // gets random characters
-                characterArray[i] = getCharacterString();    // puts characters in array
+            //Theoretically can end up in a infinite loop
+            while (firstPos.equals(secondPos) || firstPos.equals(thirdPos) ||
+                    secondPos.equals(thirdPos)) {
 
-                //Checks if the position to the left is the same or the last and the first are
-                //The same
-                if (characterArray[i].equals(t) || characterArray[i].equals(firstPos)) {
-                    setCharacterString(getRandom(gm.CHARACTERS));
-                    characterArray[i] = getCharacterString();
-                }
+                setCharacterString(getRandom(gm.CHARACTERS));
+                firstPos = getCharacterString();
+
+                setCharacterString(getRandom(gm.CHARACTERS));
+                secondPos = getCharacterString();
+
+                setCharacterString(getRandom(gm.CHARACTERS));
+                thirdPos = getCharacterString();
             }
+            characterArray = new String[]{firstPos, secondPos, thirdPos};
         }
         if(specials){
             setSpecialString(getRandom(gm.SPECIALS));

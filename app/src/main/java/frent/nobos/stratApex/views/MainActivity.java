@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             //THINGY FOR ADS
             FrameLayout adContainerView = findViewById(R.id.ad_view_container_main);
             adView = new AdView(this);
-            adView.setAdUnitId("ca-app-pub-7542723422099323/7148228987");
+            adView.setAdUnitId("ca-app-pub-7542723422099323/1201073201");
             adContainerView.addView(adView);
             loadBanner();
     }

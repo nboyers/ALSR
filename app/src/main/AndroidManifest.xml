@@ -26,7 +26,7 @@
         <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7542723422099323~9376703436" />
+            android:value="ca-app-pub-7542723422099323~5639706198" />
     </application>
 
 </manifest>
