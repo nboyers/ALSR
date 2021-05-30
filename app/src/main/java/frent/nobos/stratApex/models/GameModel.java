@@ -50,9 +50,7 @@ public class GameModel {
             "Failure to do means you forfeit and you must die!",
             "No comms! You cannot communicate with your team. Even if you go down you silly Mirage!"
     };
-
 /*
-DOES NOT NEED FOR THE TIME BEING AND WASTING MEMORY
     public final String[] KINGS_CANYON = {"Crash Site", "Water/Caustic Treatment", "Broken Relay",
             "Artillery", "Airbase", "Hot Zone", "Runoff", "Salvage" , "Gauntlet", "Spotted Lake" ,
             "The Pit" , "Bunker", "Hydro Dam" , "Repulsor", "Labs", "Swamps",

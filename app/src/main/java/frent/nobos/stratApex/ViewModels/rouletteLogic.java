@@ -59,9 +59,11 @@ public class rouletteLogic extends RouletteGUI{
         //Checks if the user has the drop area checked
         if(dropZone) {
             switch (mapChoice) {
-                //case "Kings Canyon":
-                  //  mapChoice = getRandom(gm.KINGS_CANYON);
-                 //   break;
+                /*
+                case "Kings Canyon":
+                    mapChoice = getRandom(gm.KINGS_CANYON);
+                   break;
+                   */
                 case "Olympus":
                     mapChoice = getRandom(gm.OLYMPUS);
                     break;
@@ -69,7 +71,7 @@ public class rouletteLogic extends RouletteGUI{
                     mapChoice = getRandom(gm.WORLDS_EDGE);
                     break;
                 default:
-                    mapChoice = "Drop in the middle of the map";
+                    mapChoice = " ";
             }
         }
 
@@ -77,7 +79,7 @@ public class rouletteLogic extends RouletteGUI{
         if(weapons) {
             setWeaponsString(getRandom(gm.WEAPONS));
         } else {
-            setMapChoice(" ");
+            setWeaponsString(" ");
         }
         if(medicals){
             setMedString(getRandom(gm.MEDICALS));

@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/weapons"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
         android:textStyle="bold"
         />
@@ -28,7 +29,9 @@
         android:id="@+id/weaponView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/medicalsSwitch"
@@ -36,13 +39,15 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/medicals"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/medicalView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/dropzoneSwitch"
@@ -50,13 +55,15 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/dropzone"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/dropzoneView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/gearSwitch"
@@ -64,13 +71,15 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/gear"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/gearView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/characterSwitch"
@@ -78,13 +87,16 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/character"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/charcterView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/specialSwitch"
@@ -92,27 +104,29 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/specials"
+        android:textColor="@color/apex_text"
         android:textAllCaps="true"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/specialView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/resetButton"
-        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="resetButton"
         android:text="@string/reset_button"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/apexRed"/>
 
     <Button
         android:id="@+id/randomButton"
-        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="updateGUI"
@@ -123,6 +137,7 @@
         android:textStyle="bold"
         app:iconPadding="@dimen/fab_margin"
         android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/apexRed"
         />
 
     <FrameLayout

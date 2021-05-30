@@ -7,7 +7,6 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.widget.FrameLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
@@ -121,7 +120,6 @@ public class RouletteGUI extends AppCompatActivity {
         rouletteLogic rL = new rouletteLogic();
                 rL.startGame(
                         getMapChoice(),
-
                         getWeaponSwitch(),
                         getMedicalSwitch(),
                         getDropzoneSwitch(),
@@ -184,12 +182,6 @@ public class RouletteGUI extends AppCompatActivity {
 
         super.onPause();
     }
-
-
-
-
-
-
 
     // GETTERS
     /**
