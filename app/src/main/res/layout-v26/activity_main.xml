@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="views.MainActivity"
     tools:viewBindingIgnore="true"
-    android:background="@drawable/apexbackround">
+    android:background="@drawable/menubackground">
 
     <TextView
         android:layout_width="287dp"
@@ -23,6 +23,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.538"/>
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/duoSwitch"
+        android:layout_width="108dp"
+        android:layout_height="53dp"
+        android:text="@string/duos"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.853" />
+
     <Button
         android:id="@+id/kingsCanyon_button"
         android:layout_width="189dp"
@@ -33,7 +46,6 @@
         android:text="@string/kings_canyon"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/olympus_Button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,15 +53,14 @@
         android:id="@+id/olympus_Button"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
         android:alpha="20"
+        android:backgroundTint="@color/apexRed"
         android:text="@string/olympus"
         android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kingsCanyon_button"
-        android:backgroundTint="@color/apexRed" />
+        tools:layout_editor_absoluteY="458dp" />
 
     <Button
         android:id="@+id/worldsEdge_Button"
@@ -68,8 +79,8 @@
 
     <FrameLayout
         android:id="@+id/ad_view_container_main"
-        android:layout_width="311dp"
-        android:layout_height="107dp"
+        android:layout_width="328dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -78,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/worldsEdge_Button"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
     </FrameLayout>
 

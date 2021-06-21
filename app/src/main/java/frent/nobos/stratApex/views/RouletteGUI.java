@@ -40,6 +40,8 @@ public class RouletteGUI extends AppCompatActivity {
     //name of the map they want to do the strat on
     private String mapChoice;
 
+    private boolean isDuosChecked = false;
+
     private AdView adView;
 
     /**
@@ -65,7 +67,10 @@ public class RouletteGUI extends AppCompatActivity {
         STR_BIND.specialSwitch.setChecked(true);
 
         Intent intent = getIntent();
+        Bundle bundle = getIntent().getExtras();
         mapChoice = intent.getStringExtra(MainActivity.TEXT_TO_SEND);
+        isDuosChecked = bundle.getBoolean(MainActivity.TEXT_TO_SEND);
+
 
         //THINGY FOR ADS
         FrameLayout adContainerView = STR_BIND.adViewContainer;
@@ -125,7 +130,9 @@ public class RouletteGUI extends AppCompatActivity {
                         getDropzoneSwitch(),
                         getGearSwitch(),
                         getCharacterSwitch(),
-                        getSpecialSwitch()
+                        getSpecialSwitch(),
+                        getDuoChecked()
+
                 );
 
         //UPDATES THE GUI
@@ -234,11 +241,15 @@ public class RouletteGUI extends AppCompatActivity {
         return STR_BIND.specialSwitch.isChecked();
     }
 
+    /**
+     * Returns if the game mode is duos or trios
+     * @return - true for duos, false for trios
+     */
+    public Boolean getDuoChecked() { return isDuosChecked; }
+
     @Override
     public void onDestroy(){
         super.onDestroy();
         adView.destroy();
     }
-
-
 }

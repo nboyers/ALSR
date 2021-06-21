@@ -24,7 +24,11 @@ public class GameModel {
             "No barrel stabalisers","No helmets","Helmets only"," Speed is life! - Octane",
             "No knockdown shields (minus self res shield)","No red evos","Only white gear",
             "No frag grenades","No thermite grenades","Only grenades are thermites","No abilities.",
-            "Nessie isn't a piece of equipment, she's a stuffed toy!"};
+            "Nessie isn't a piece of equipment, she's a stuffed toy!",
+            "Full body protection. Only use the Helmet and Body Shield","Ultimate Accelerant only",
+            "You are not planning on going down anyway. Don't use the Knockdown Shield.",
+            "Don't use any body protection","Don't use the backpack"
+    };
 
     public final String[] CHARACTERS = {"Bloodhound","Pathfinder","Bangalore", "Caustic","Crypto",
     "Fuse", "Gibraltar", "Horizon", "Lifeline","Loba", "Mirage", "Octane", "Rampart", "Revenant",
@@ -48,7 +52,23 @@ public class GameModel {
     "Sticks and Stones! Only use grenades and bows for a whole game. GLHF",
     "Protect the President! Jumpmaster is president. Protect them at all cost. " +
             "Failure to do means you forfeit and you must die!",
-            "No comms! You cannot communicate with your team. Even if you go down you silly Mirage!"
+            "No comms! You cannot communicate with your team. Even if you go down you silly Mirage!",
+            "You can only land on a house if somebody else is already going for that house",
+            "Never revive teammates","Only loot houses from the 2nd floor and up",
+            "Jump out of the plane as soon as possible and only head East. " +
+                    "Land as far east as you can possibly get",
+                    "Sports caster. You can loot as normal, but then you must find a team and " +
+                    "follow them around for as long as possible without being seen and sports cast " +
+                    "what they do. If they are killed you must follow the team who killed them",
+            "Only use the first weapon you find during the game.",
+            "Act as if your abilities don't exist.",
+            "Keep moving! You are not allowed to stop moving at any point in time.",
+            "You're not allowed to reload whilst fighting an enemy. Switching weapons only!",
+            "After the zone appears, you are only allowed to move when the zone does. " +
+                    "When the zone doesn't move, you don't",
+            "No repairing your armor. When your armor drops to 0" +
+                    " you have to find new armor to replace it.",
+            "Hipfire only."
     };
 /*
     public final String[] KINGS_CANYON = {"Crash Site", "Water/Caustic Treatment", "Broken Relay",

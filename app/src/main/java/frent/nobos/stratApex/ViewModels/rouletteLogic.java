@@ -23,6 +23,8 @@ public class rouletteLogic extends RouletteGUI{
     //Array of characters (Only supports trios)
     private String[] characterArray = new String[3];
 
+    private boolean duosSwitch;
+
     //Talks to the model
     private final GameModel gm = new GameModel();
 
@@ -36,7 +38,7 @@ public class rouletteLogic extends RouletteGUI{
      */
     public  void startGame(String mapChoice, boolean weapons, boolean medicals,
                                  boolean dropZone, boolean gear,
-                                 boolean character, boolean specials) {
+                                 boolean character, boolean specials, boolean duo) {
 
         //Gets the boolean logic
         setMapChoice(mapChoice);   // String
@@ -46,9 +48,14 @@ public class rouletteLogic extends RouletteGUI{
         setGear(gear);            // Bool
         setCharacter(character);  // Bool
         setSpecials(specials);    // Bool
+        setDuosSwitch(duo);
 
         //Assigns the random loadouts
         randomLoadouts();
+    }
+
+    public void setDuosSwitch(boolean duosSwitch) {
+        this.duosSwitch = duosSwitch;
     }
 
     /**
@@ -114,7 +121,12 @@ public class rouletteLogic extends RouletteGUI{
                 setCharacterString(getRandom(gm.CHARACTERS));
                 thirdPos = getCharacterString();
             }
-            characterArray = new String[]{firstPos, secondPos, thirdPos};
+
+            if(duosSwitch) {
+                characterArray = new String[] {firstPos,secondPos, ""};
+            } else {
+                characterArray = new String[]{firstPos, secondPos, thirdPos};
+            }
         }
         if(specials){
             setSpecialString(getRandom(gm.SPECIALS));
