@@ -123,7 +123,7 @@ public class rouletteLogic extends RouletteGUI{
             }
 
             if(duosSwitch) {
-                characterArray = new String[] {firstPos,secondPos, ""};
+                characterArray = new String[] {firstPos,secondPos};
             } else {
                 characterArray = new String[]{firstPos, secondPos, thirdPos};
             }
