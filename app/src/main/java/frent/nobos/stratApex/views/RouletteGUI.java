@@ -24,14 +24,6 @@ import frent.nobos.stratApex.databinding.StratMenuBinding;
  * Last Edited: 2021-05-11
  * @author Noah Boyers
  */
-
-/*
-*
-* TODO -
-*  1. Fix Button color from default
-*  2. Change strat colors to be see-able
-*  3. Change the Header to not be purple.
- */
 public class RouletteGUI extends AppCompatActivity {
 
     // Main menu but binding so we can update the GUI
@@ -185,7 +177,6 @@ public class RouletteGUI extends AppCompatActivity {
     public void onPause() {
         // Pause the AdView.
         adView.pause();
-
         super.onPause();
     }
 
