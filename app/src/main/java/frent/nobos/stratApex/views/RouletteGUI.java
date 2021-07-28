@@ -26,11 +26,11 @@ import frent.nobos.stratApex.databinding.StratMenuBinding;
  */
 public class RouletteGUI extends AppCompatActivity {
 
+    //name of the map they want to do the strat on
+    private  String mapChoice;
+    
     // Main menu but binding so we can update the GUI
     private StratMenuBinding STR_BIND;
-
-    //name of the map they want to do the strat on
-    private String mapChoice;
 
     private boolean isDuosChecked;
 
@@ -76,7 +76,7 @@ public class RouletteGUI extends AppCompatActivity {
     /**
      * Load the View with ads
      */
-    private void loadBanner() {
+     void loadBanner() {
 
         AdRequest adRequest = new AdRequest.Builder().build();
         AdSize adSize = getAdSize();
@@ -98,8 +98,8 @@ public class RouletteGUI extends AppCompatActivity {
         DisplayMetrics outMetrics = new DisplayMetrics();
         display.getMetrics(outMetrics);
 
-        float widthPixels = outMetrics.widthPixels;
-        float density = outMetrics.density;
+        double widthPixels = outMetrics.widthPixels;
+        double density = outMetrics.density;
 
         int adWidth = (int) (widthPixels / density);
 
@@ -185,57 +185,45 @@ public class RouletteGUI extends AppCompatActivity {
      * Map Choice from the Main activity
      * @return - map choice
      */
-    private String getMapChoice() {
+     String getMapChoice() {
         return mapChoice;
     }
     /**
      * Method for weapon switch
      * @return - on or off
      */
-    public Boolean getWeaponSwitch() {
-        return STR_BIND.weaponsSwitch.isChecked();
-    }
+    boolean getWeaponSwitch() { return STR_BIND.weaponsSwitch.isChecked(); }
     /**
      * Medical switch
      * @return - on or off
      */
-    public Boolean getMedicalSwitch() {
-        return STR_BIND.medicalsSwitch.isChecked();
-    }
+     boolean getMedicalSwitch() { return STR_BIND.medicalsSwitch.isChecked(); }
     /**
      * Switch for the drop zone inside a map
      * @return - on or off drop zone in a map
      */
-    public Boolean getDropzoneSwitch() {
-        return STR_BIND.dropzoneSwitch.isChecked();
-    }
+     boolean getDropzoneSwitch() { return STR_BIND.dropzoneSwitch.isChecked(); }
     /**
      *  Switch for gear rules
      * @return - on or off for gear
      */
-    public Boolean getGearSwitch() {
-        return STR_BIND.gearSwitch.isChecked();
-    }
+     boolean getGearSwitch() { return STR_BIND.gearSwitch.isChecked(); }
     /**
      *  Switch for character rules
      * @return - on or off
      */
-    public Boolean getCharacterSwitch() {
-        return STR_BIND.characterSwitch.isChecked();
-    }
+     boolean getCharacterSwitch() { return STR_BIND.characterSwitch.isChecked(); }
     /**
      * Switch for special rules
      * @return - on or off for special rules
      */
-    public Boolean getSpecialSwitch() {
-        return STR_BIND.specialSwitch.isChecked();
-    }
+      boolean getSpecialSwitch() {return STR_BIND.specialSwitch.isChecked(); }
 
     /**
      * Returns if the game mode is duos or trios
      * @return - true for duos, false for trios
      */
-    public Boolean getDuoChecked() { return isDuosChecked; }
+    boolean getDuoChecked() { return isDuosChecked; }
 
     @Override
     public void onDestroy(){

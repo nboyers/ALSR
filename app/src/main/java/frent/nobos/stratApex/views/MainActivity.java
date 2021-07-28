@@ -1,13 +1,20 @@
 package frent.nobos.stratApex.views;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
+import android.os.StrictMode;
+import android.os.strictmode.Violation;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.firebase.FirebaseApp;
+
+import java.util.concurrent.Executors;
 
 import frent.nobos.stratApex.R;
 
@@ -34,10 +41,31 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param savedInstanceState - mapping from String keys to various Parcelable values.
      */
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
+
+        if (Debug.isDebuggerConnected()) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()   // or .detectAll() for all detectable problems
+                    .penaltyLog()
+                    .build());
+
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectNonSdkApiUsage()
+                    .penaltyListener( Executors.newSingleThreadExecutor() , v -> {
+
+                    })
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
 
         setContentView(R.layout.activity_main);
     //   King_btn = findViewById(R.id.kingsCanyon_button);

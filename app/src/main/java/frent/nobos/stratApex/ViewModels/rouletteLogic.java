@@ -10,7 +10,7 @@ import frent.nobos.stratApex.views.RouletteGUI;
  * Last Edited: 2021-05-11
  * @author Noah Boyers
  */
-public class rouletteLogic extends RouletteGUI{
+public class rouletteLogic extends RouletteGUI {
     //Map choice to play from
     private String mapChoice;
 
@@ -24,10 +24,6 @@ public class rouletteLogic extends RouletteGUI{
     private String[] characterArray = new String[3];
 
     private boolean duosSwitch;
-
-    //Talks to the model
-    private final GameModel gm = new GameModel();
-
     /**
      * Method that gets the info from the GUI to start logic
      * @param weapons - true / false to weapon option
@@ -72,10 +68,10 @@ public class rouletteLogic extends RouletteGUI{
                    break;
                    */
                 case "Olympus":
-                    mapChoice = getRandom(gm.OLYMPUS);
+                    mapChoice = getRandom(GameModel.OLYMPUS);
                     break;
                 case "Worlds Edge":
-                    mapChoice = getRandom(gm.WORLDS_EDGE);
+                    mapChoice = getRandom(GameModel.WORLDS_EDGE);
                     break;
                 default:
                     mapChoice = " ";
@@ -84,41 +80,41 @@ public class rouletteLogic extends RouletteGUI{
 
         // Controls the logic for each category - fires if user has the switches checked
         if(weapons) {
-            setWeaponsString(getRandom(gm.WEAPONS));
+            setWeaponsString(getRandom(GameModel.WEAPONS));
         } else {
             setWeaponsString(" ");
         }
         if(medicals){
-            setMedString(getRandom(gm.MEDICALS));
+            setMedString(getRandom(GameModel.MEDICALS));
         } else {
             setMedString(" ");
         }
         if(gear){
-            setGearString(getRandom(gm.GEAR));
+            setGearString(getRandom(GameModel.GEAR));
         } else {
             setGearString(" ");
         }
         if(character) {
-            setCharacterString(getRandom(gm.CHARACTERS));
+            setCharacterString(getRandom(GameModel.CHARACTERS));
             String firstPos = getCharacterString();
 
-            setCharacterString(getRandom(gm.CHARACTERS));
+            setCharacterString(getRandom(GameModel.CHARACTERS));
             String secondPos = getCharacterString();
 
-            setCharacterString(getRandom(gm.CHARACTERS));
+            setCharacterString(getRandom(GameModel.CHARACTERS));
             String thirdPos = getCharacterString();
 
             //Theoretically can end up in a infinite loop
             while (firstPos.equals(secondPos) || firstPos.equals(thirdPos) ||
                     secondPos.equals(thirdPos)) {
 
-                setCharacterString(getRandom(gm.CHARACTERS));
+                setCharacterString(getRandom(GameModel.CHARACTERS));
                 firstPos = getCharacterString();
 
-                setCharacterString(getRandom(gm.CHARACTERS));
+                setCharacterString(getRandom(GameModel.CHARACTERS));
                 secondPos = getCharacterString();
 
-                setCharacterString(getRandom(gm.CHARACTERS));
+                setCharacterString(getRandom(GameModel.CHARACTERS));
                 thirdPos = getCharacterString();
             }
 
@@ -129,7 +125,7 @@ public class rouletteLogic extends RouletteGUI{
             }
         }
         if(specials){
-            setSpecialString(getRandom(gm.SPECIALS));
+            setSpecialString(getRandom(GameModel.SPECIALS));
         } else {
             setSpecialString(" ");
         }
@@ -151,7 +147,7 @@ public class rouletteLogic extends RouletteGUI{
      * Sets the dropzone boolean
      * @param dropZone - yes or no for drop
      */
-    private  void setDropZone(boolean dropZone) {
+    private void setDropZone(boolean dropZone) {
         this.dropZone = dropZone;
     }
     /**

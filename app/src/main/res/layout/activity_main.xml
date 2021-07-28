@@ -17,12 +17,37 @@
         android:inputType="none"
         android:text="@string/map_choice"
         android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/kingsCanyon_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.538" />
 
+    <Button
+        android:id="@+id/olympus_Button"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="456dp"
+        android:text="@string/olympus"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/apexRed"/>
+
+    <Button
+        android:id="@+id/worldsEdge_Button"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/world_s_edge"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742"
+        android:backgroundTint="@color/apexRed"/>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/duoSwitch"
@@ -33,52 +58,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
-
-    <Button
-        android:id="@+id/kingsCanyon_button"
-        android:layout_width="189dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:enabled="false"
-        android:text="@string/kings_canyon"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/olympus_Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/olympus_Button"
-        android:layout_width="189dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
-        android:backgroundTint="@color/apexRed"
-        android:text="@string/olympus"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kingsCanyon_button" />
-
-    <Button
-        android:id="@+id/worldsEdge_Button"
-        android:layout_width="189dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/apexRed"
-        android:text="@string/world_s_edge"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/olympus_Button"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintVertical_bias="0.848" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
