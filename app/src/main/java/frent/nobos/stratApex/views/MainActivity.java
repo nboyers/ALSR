@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.StrictMode;
-import android.os.strictmode.Violation;
 import android.widget.Button;
 
 import androidx.annotation.RequiresApi;
@@ -18,7 +17,7 @@ import java.util.concurrent.Executors;
 
 import frent.nobos.stratApex.R;
 
-//TODO: Work on passing the data (Duos or not) from Main activity to Roulette View
+
 
 /**
  * When the app starts
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TEXT_TO_SEND = "frent.nobos.stratApex";
     public static final String BOOL_TO_SEND = "frent.nobos.duos";
-    private Button Oly_btm,worldEdge_btn;
+    private Button Oly_btm,worldEdge_btn, king_btn;
     SwitchCompat duo_Toggle;
     private String sendToActivity;
     private boolean sendToGame = false; // Default Value
@@ -71,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
     //   King_btn = findViewById(R.id.kingsCanyon_button);
         Oly_btm = findViewById(R.id.olympus_Button);
         duo_Toggle = findViewById(R.id.duoSwitch);
+        king_btn = findViewById(R.id.kingsCanyon_button);
         worldEdge_btn = findViewById(R.id.worldsEdge_Button);
 
 
         //THIS LINE DOESNT NEED TO BE IN THE ACTIVE CODE
-/*
-        King_btn.setOnClickListener(v -> {
-            sendToActivity = King_btn.getText().toString();
-            duo_State = duo_Toggle.isChecked();
+        king_btn.setOnClickListener(v -> {
+            sendToActivity =  king_btn.getText().toString();
+            sendToGame = duo_Toggle.isChecked();
             goToActivity();
         });
-        */
+
         Oly_btm.setOnClickListener(v -> {
             sendToActivity = Oly_btm.getText().toString();
             sendToGame = duo_Toggle.isChecked();

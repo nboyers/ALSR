@@ -7,7 +7,7 @@ import frent.nobos.stratApex.views.RouletteGUI;
 /**
  * Viewmodel class
  * that controls all the game logic
- * Last Edited: 2021-05-11
+ * Last Edited: 2021-20-09
  * @author Noah Boyers
  */
 public class rouletteLogic extends RouletteGUI {
@@ -32,7 +32,7 @@ public class rouletteLogic extends RouletteGUI {
      * @param character - true / false to character option
      * @param specials - true / false to special rule option
      */
-    public  void startGame(String mapChoice, boolean weapons, boolean medicals,
+    public void startGame(String mapChoice, boolean weapons, boolean medicals,
                                  boolean dropZone, boolean gear,
                                  boolean character, boolean specials, boolean duo) {
 
@@ -62,11 +62,9 @@ public class rouletteLogic extends RouletteGUI {
         //Checks if the user has the drop area checked
         if(dropZone) {
             switch (mapChoice) {
-                /*
                 case "Kings Canyon":
-                    mapChoice = getRandom(gm.KINGS_CANYON);
+                    mapChoice = getRandom(GameModel.KINGS_CANYON);
                    break;
-                   */
                 case "Olympus":
                     mapChoice = getRandom(GameModel.OLYMPUS);
                     break;
@@ -74,7 +72,7 @@ public class rouletteLogic extends RouletteGUI {
                     mapChoice = getRandom(GameModel.WORLDS_EDGE);
                     break;
                 default:
-                    mapChoice = " ";
+                    mapChoice = "";
             }
         }
 
@@ -82,17 +80,17 @@ public class rouletteLogic extends RouletteGUI {
         if(weapons) {
             setWeaponsString(getRandom(GameModel.WEAPONS));
         } else {
-            setWeaponsString(" ");
+            setWeaponsString("");
         }
         if(medicals){
             setMedString(getRandom(GameModel.MEDICALS));
         } else {
-            setMedString(" ");
+            setMedString("");
         }
         if(gear){
             setGearString(getRandom(GameModel.GEAR));
         } else {
-            setGearString(" ");
+            setGearString("");
         }
         if(character) {
             setCharacterString(getRandom(GameModel.CHARACTERS));
