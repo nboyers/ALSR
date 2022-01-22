@@ -32,41 +32,37 @@ public class GameModel {
 
     public static final String[] CHARACTERS = {"Bloodhound","Pathfinder","Bangalore", "Caustic","Crypto",
     "Fuse", "Gibraltar", "Horizon", "Lifeline","Loba", "Mirage", "Octane", "Rampart", "Revenant",
-            "Wattson", "Wraith","Seer"};
+            "Wattson", "Wraith","Seer","Ash"};
 
-    public static final String[] SPECIALS = {"Minimalism: You cannot use a backpack.",
-            "Beware the man with one gun, he knows how to use it: Only use one gun.",
-            "Time's Up! Jumpmaster lands somewhere else to others. " +
-            "You have to stay in water as much as possible. You must find water and fight in it." +
-                    " If there is no water in the circle play as normal.",
-    "Every time you kill someone, you have to switch your weapon that you used to kill them, with one of their weapons.",
-    "Boxing Match. You must drop your weapons, throw hands and punch the final squad to death.",
-            "No Purples! You are not allowed to use anything graded purple or higher. "
-            ,"Purple Evo Shields earned must be dropped immediately!",
-    "Respect the Dead: No looting bodies.",
-    "No Respawns or Revives! Pretty self explanatory. No golden knockdown either.",
-    "Ironman Challenge. You are only allowed to use Mozambique's without hammerpoint!" +
-            " No higher than blue shields and no more than 2 stacks of healable. GL HF." ,
-            "Hot Switch. " + "When you kill someone you must swap your weapons for theirs. " +
-            "You must thirst any downed player and swap before attacking another player.",
-    "Sticks and Stones! Only use grenades and bows for a whole game. GLHF",
-    "Cannot open door, must either loot open structure or shoot/kick/explode the doors open.",
-           "xxXMontageXxx: If you have a scoped weapon, you must do a 360 before you can shoot.",
-            "You can only land on a house if somebody else is already going for that house",
-            "Never revive teammates","Only loot houses from the 2nd floor and up",
-            "Jump out of the plane as soon as possible and only head East. " +
-                    "Land as far east as you can possibly get",
-            "Choose between the first 5 weapons you encounter " +
-                    "but there is no going back once you dropped one." ,
-            "Only use the first weapon you find during the game.",
-            "Act as if your abilities don't exist.",
-            "Keep moving! You are not allowed to stop moving at any point in time.",
-            "You're not allowed to reload whilst fighting an enemy. Switching weapons only!",
-            "After the zone appears, you are only allowed to move when the zone does. " +
-                    "When the zone doesn't move, you don't",
-            "You must go to the center of the circle as fast as you can every time the circle shrinks." +
-                    " you have to find new armor to replace it.",
-            "Hipfire only.","Too late for peace! Don't use the Peacekeeper"
+    public static final String[] SPECIALS = {"Afraid of heights: you can't go above the first story of any building.",
+            "Heads Up: You must fire at least 3 warning shots close to the enemy before hitting them.",
+            "Choose Wisely: You can only loot one house/building (can loot death crates).",
+            "Addict: you have to pick up every Ultimate Accelerator can you see. You must use them, you can't drop them to make space.",
+            "Punch-squad: Drop where the most people drop and try to get as many punch kills as possible before the first circle.",
+            "It's quiet to quiet: Mute all game sounds.",
+            "Hair Trigger: Every time your ultimate is fully charged you must call it in within 30 seconds.",
+            "Switch It Up: Every time you kill someone, you have to switch your weapon that you used to kill them, with one of their weapons.",
+            "Dead Eye: You are not allowed to put any scopes on your weapons.",
+            "Guardian Angel: Follow the first player/squad you find and protect them from other without letting them know that you are there, you may not harm them. If they die you must kill the squad that finished them.",
+            "Sniper Shotty: Snipers and shotguns only.",
+            "Squad roll out: Everyone in the squad takes a different path through the circle.",
+            "Quiet as a Mouse: Crouch walk slowly through each compound you reach.",
+            "Slim Pickings: You can only loot airdrops, get a vehicle and find that drop.",
+            "SEAL: You have to stay in water as much as possible. You must find water and fight in it. If there is no water in the circle play as normal.",
+            "Bird Watcher: You must go to every care package (red and blue) you see falling.",
+            "Hair Trigger: Every time your ultimate is fully charged you must call it in within 30 seconds.",
+            "The Huntsman: Shotguns and wingman only.",
+            "Paraglider: Jump in the middle of the dropship path and pull your chute straight away. Glide to the furthest point away from the path.",
+            "Grenadier: Your only weapons are grenades and melee.",
+            "Grounded: You can only loot the bottom story/floor of any building/house/structure.",
+            "Flightmaster: You must use every redeploy balloon you see.",
+            "No Cowards: If you are shot at you cannot crouch until the enemy is dead or you have gone far away from them.",
+            "Respect the Dead: No looting bodies.",
+            "Pack Mule: One person can only carry meds and ammo, the others must protect him and get all the kills. The pack mule can only use grenades to protect himself.",
+            "Choose between the first 5 weapons you encounter but there is no going back once you dropped one.",
+            "John Wick. Only use pistols or shotguns.",
+            "Laser Beam: Only use weapons that use Energy type ammo",
+            "Grave Robbers: Only use guns from dead players."
     };
 
     public static final String[] KINGS_CANYON = {"Crash Site", "Water/Caustic Treatment", "Broken Relay",

@@ -73,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
         king_btn = findViewById(R.id.kingsCanyon_button);
         worldEdge_btn = findViewById(R.id.worldsEdge_Button);
 
-
-        //THIS LINE DOESNT NEED TO BE IN THE ACTIVE CODE
         king_btn.setOnClickListener(v -> {
             sendToActivity =  king_btn.getText().toString();
             sendToGame = duo_Toggle.isChecked();
