@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.FirebaseApp;
 
 import java.util.concurrent.Executors;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TEXT_TO_SEND = "frent.nobos.stratApex";
     public static final String BOOL_TO_SEND = "frent.nobos.duos";
-    private Button Oly_btm,worldEdge_btn, king_btn;
+    private Button Oly_btm,worldEdge_btn, king_btn, stormPoint_btn;
     SwitchCompat duo_Toggle;
     private String sendToActivity;
     private boolean sendToGame = false; // Default Value
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MobileAds.initialize(this);
         FirebaseApp.initializeApp(this);
 
         if (Debug.isDebuggerConnected()) {
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
-    //   King_btn = findViewById(R.id.kingsCanyon_button);
+        stormPoint_btn = findViewById(R.id.stormPoint_button);
         Oly_btm = findViewById(R.id.olympus_Button);
         duo_Toggle = findViewById(R.id.duoSwitch);
         king_btn = findViewById(R.id.kingsCanyon_button);
@@ -89,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
             sendToGame = duo_Toggle.isChecked();
             goToActivity();
         });
+        stormPoint_btn.setOnClickListener(view -> {
+            sendToActivity = stormPoint_btn.getText().toString();
+            sendToGame = duo_Toggle.isChecked();
+            goToActivity();
+        });
     }
 
 
@@ -98,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
      * the gamemode is duos or trios
      */
     private void goToActivity() {
-        Intent intent = new Intent(this, RouletteGUI.class); // Sends what map
+        Intent intent; // Sends what map
+        intent = new Intent(this, RouletteGUI.class);
         intent.putExtra(TEXT_TO_SEND, sendToActivity);
         intent.putExtra(BOOL_TO_SEND, sendToGame);
         startActivity(intent);

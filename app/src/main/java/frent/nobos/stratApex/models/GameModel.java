@@ -31,8 +31,8 @@ public class GameModel {
     };
 
     public static final String[] CHARACTERS = {"Bloodhound","Pathfinder","Bangalore", "Caustic","Crypto",
-    "Fuse", "Gibraltar", "Horizon", "Lifeline","Loba", "Mirage", "Octane", "Rampart", "Revenant",
-            "Wattson", "Wraith","Seer","Ash"};
+            "Fuse", "Gibraltar", "Horizon", "Lifeline","Loba", "Mirage", "Octane", "Rampart", "Revenant",
+            "Wattson", "Wraith","Seer","Mad Maggie","Ash"};
 
     public static final String[] SPECIALS = {"Afraid of heights: you can't go above the first story of any building.",
             "Heads Up: You must fire at least 3 warning shots close to the enemy before hitting them.",
@@ -79,6 +79,12 @@ public class GameModel {
             "Fragment E" , "Harvester" , "Fragment W" , "Countdown" , "Thermal Station" ,
             "Launch Site" , "The Dome" , "Lava City" , "Sorting Factory" , "Staging" ,
             "The Geyser" , "Your Choice" , "Train Yard" , "Lava Fissure"};
+
+    public static final String[] STORM_POINT = {"Alex's Crossing","Antenna","Barometer","Black Sand Islands", "Cascade Falls", "Cenote Cave","Checkpoint",
+            "Command Center", "Cory's Crossing","Dave's Crossing","Davis' Crossing","East Lift","Fish Farms","Forbidden Zones","Forest",
+            "Gale Station","Highpoint","Launch Site","Lightning Rod","Lonely Island","Mountain Lift","North Pad","Oasis","Prowler Island",
+            "River's Center","Ship Fall","Siren Isle","Southern Point","Storm Catcher","The Caves","The Lagoon","The Mill","The Ridge","The Wall",
+            "Thunder Watch","Trenches","Zavala's Crossing"};
 
  //   public static final String[] DEFAULT_LEGENDS = {"Bloodhound","Pathfinder","Bangalore","Lifeline","Wraith",
    //         "Gibraltar"};

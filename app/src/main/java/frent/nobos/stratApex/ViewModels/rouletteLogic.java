@@ -37,7 +37,7 @@ public class rouletteLogic extends RouletteGUI {
                                  boolean character, boolean specials, boolean duo) {
 
         //Gets the boolean logic
-        setMapChoice(mapChoice);   // String
+        setMapChoice(mapChoice);  // String
         setWeapons(weapons);      // Bool
         setMedicals(medicals);    // Bool
         setDropZone(dropZone);    // Bool
@@ -70,6 +70,9 @@ public class rouletteLogic extends RouletteGUI {
                     break;
                 case "Worlds Edge":
                     mapChoice = getRandom(GameModel.WORLDS_EDGE);
+                    break;
+                case "Storm Point":
+                    mapChoice = getRandom(GameModel.STORM_POINT);
                     break;
                 default:
                     mapChoice = "";

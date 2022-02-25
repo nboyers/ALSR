@@ -4,14 +4,21 @@ package frent.nobos.stratApex.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.FirebaseApp;
 
 import java.util.Arrays;
@@ -35,6 +42,8 @@ public class RouletteGUI extends AppCompatActivity {
     private boolean isDuosChecked;
 
     private AdView adView;
+    private InterstitialAd mInterstitialAd;
+    private final String TAG = "InterstitialAd";
 
     /**
      * Method that runs on the creation of
@@ -70,6 +79,28 @@ public class RouletteGUI extends AppCompatActivity {
         adView.setAdUnitId("ca-app-pub-7542723422099323/1201073201");
         adContainerView.addView(adView);
         loadBanner();
+
+        MobileAds.initialize(this, initializationStatus -> {});
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this,"ca-app-pub-7542723422099323/4500795281", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i(TAG, "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i(TAG, loadAdError.getMessage());
+                        mInterstitialAd = null;
+                    }
+                });
+
     }
 
 
@@ -149,6 +180,16 @@ public class RouletteGUI extends AppCompatActivity {
      * @param view - The strat menu
      */
     public void resetButton(View view) {
+        int number = (int)(Math.random() * 10);
+        // Will Fire ~33% of the time assuming an ad is ready
+        if (number % 3 == 0){
+            if (mInterstitialAd != null) {
+                mInterstitialAd.show(RouletteGUI.this);
+            } else {
+                Log.d(TAG, "The interstitial ad wasn't ready yet.");
+            }
+        }
+
         // sets the text to blank strings
         STR_BIND.weaponView.setText("");
         STR_BIND.medicalView.setText("");
@@ -168,7 +209,6 @@ public class RouletteGUI extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
         // Resume the AdView.
         adView.resume();
     }
